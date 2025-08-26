@@ -1,0 +1,2936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Happy Birthday  🎀🌺💞</title>
+<meta name="description" content="A magical, pink-themed interactive birthday webpage for Areeba.">
+<style>
+
+    :root {
+      --pink:#ffc0cb;
+      --pink-2:#ffd6e1;
+      --pink-3:#ffe6ee;
+      --rose:#ff7aa2;
+      --rose-deep:#ff4f8b;
+      --white:#ffffff;
+      --shadow: 0 10px 30px rgba(255, 105, 180, .25);
+      --shadow-soft: 0 8px 20px rgba(255, 105, 180, .18);
+      --text:#4b2b36;
+      --muted:#7b4d5b;
+      --glass: rgba(255,255,255,.6);
+    }
+    * { box-sizing: border-box; }
+    html, body { 
+      height: 100%; 
+    }
+    body {
+      margin: 0;
+      font-family: ui-rounded, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background: linear-gradient(180deg, #ffe9f1, #ffeef6 40%, #fff5fa);
+      scroll-behavior: smooth;
+    }
+    a { 
+      color: var(--rose-deep); 
+      text-decoration: none;
+     }
+    .container { 
+      width: min(1100px, 92vw); 
+      margin: 0 auto;
+       padding: 24px; 
+      }
+    .section {
+       padding: 64px 0; 
+       position: relative; 
+      }
+    .glow { 
+      text-shadow: 0 0 12px rgba(255, 145, 180, 0.35), 0 0 24px rgba(255, 145, 200, 0.25);
+     }
+    h1,h2,h3 {
+       margin: 0 0 12px; 
+       line-height: 1.15;
+       }
+    h1 { 
+      font-size: clamp(2rem, 5vw, 3.4rem);
+     }
+    h2 {
+       font-size: clamp(1.6rem, 4vw, 2.4rem); 
+      }
+    h3 { 
+      font-size: clamp(1.2rem, 3vw, 1.5rem);
+     }
+    p {
+       line-height: 1.7; 
+      }
+    .btn {
+      border: none; cursor: pointer; padding: 12px 18px; border-radius: 14px;
+      background: linear-gradient(180deg, #ffd4e2, #ffbcd0);
+      box-shadow: var(--shadow);
+      transition: transform .15s ease, box-shadow .2s ease, opacity .2s ease;
+      font-weight: 600;
+    }
+    .btn:hover { 
+      transform: translateY(-2px);
+      box-shadow: 0 14px 36px rgba(255, 105, 180, .3);
+     }
+    .btn:active { 
+      transform: 
+      translateY(0);
+     }
+    .btn-outline { 
+      background: transparent; 
+      border: 2px solid #ffb4c9; 
+    }
+    .subtle { 
+      opacity: .85; 
+      font-size: medium;
+    }
+    header.nav {
+      position: sticky; 
+      top: 0; 
+      z-index: 999;
+      backdrop-filter: blur(8px);
+      background: rgba(255, 245, 250, .7);
+      border-bottom: 1px solid rgba(255, 170, 200, .35);
+    }
+    .nav-inner {
+       display: flex; 
+       align-items: center; 
+       justify-content: space-between;
+        gap: 12px;
+        padding: 8px 0; 
+      }
+    .nav-links { 
+      display: flex; 
+      flex-wrap: wrap; 
+      gap: 10px;
+     }
+    .nav-links a { 
+      padding: 8px 12px; 
+      border-radius: 10px; 
+      background: rgba(255,255,255,.7); 
+      box-shadow: var(--shadow-soft); 
+      font-weight: 600; 
+    }
+    .hero {
+      min-height: 70vh;
+       display: grid; 
+       place-items: center; 
+       text-align: center;
+      background: linear-gradient(120deg, #ffe6ef, #ffd9e7 50%, #ffeef6);
+    }
+    .hero .title { 
+      font-weight: 900; 
+      letter-spacing: 0.5px; 
+    }
+    .hero .subtitle { 
+      font-size: clamp(1rem, 2.2vw, 1.2rem);
+       color: var(--muted);
+       }
+    .age-grid {
+      display: grid; 
+      grid-template-columns: repeat(6, minmax(80px, 1fr));
+       gap: 12px;
+    }
+    .age-item {
+      background: rgba(255,255,255,.75);
+       border-radius: 16px; 
+       padding: 16px; 
+       text-align: center; 
+       box-shadow: var(--shadow-soft);
+    }
+    .age-item strong { 
+      display: block; 
+      font-size: clamp(1.2rem, 3.5vw, 2rem);
+     }
+    .slideshow {
+      position: relative; 
+      height: 400px;
+       overflow:visible;
+        border-radius: 10px;
+         box-shadow: var(--shadow);
+         }
+    .slide {
+       position: absolute;
+        inset: 0; 
+        display: grid; 
+        place-items: center;
+         opacity: 0;
+          transition: opacity 1s ease;
+         }
+    .slide .slide-content {
+       text-align: center; 
+       padding:2px;
+        background: rgba(255,255,255,.55); 
+        border-radius: 4px;
+       }
+    .slide img {
+  max-width: 250px;
+  max-height: 250px;
+  border-radius: 20px ;
+  object-fit: contain; /* 'cover' cut karega, 'contain' full dikhayega */
+}
+    .slide.active { 
+      opacity: 1;
+     }
+     .cards img {
+      width: 100%;
+      height: 100%;
+      border-radius:25px ;
+      align-items: center;
+      display: flex;
+      object-fit: contain;
+     }
+    .cards {
+  
+       display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+       gap: 16px;
+       }
+    .card {
+       background: rgba(255,255,255,.75); 
+       border-radius: 18px; 
+       padding: 18px;
+        box-shadow: var(--shadow-soft);
+       }
+    .hover-pop {
+        transform :.12s ease;
+        box-shadow :.2s ease;
+       }
+    .hover-pop:hover { 
+      transform: translateY(-5px) scale(1.02);
+       box-shadow: 0 18px 36px rgba(255, 105, 180, .28); 
+      }
+    .meter-wrap {
+       height: 24px; 
+       background: rgba(255,255,255,.6); 
+       border-radius: 999px; 
+       overflow: hidden; 
+       box-shadow: var(--shadow-soft);
+       }
+    .meter { 
+      height: 100%;
+       width: 0%;
+      background: linear-gradient(90deg,#ff9fbd,#ff74a8,#ff4f8b); 
+      transition: width .3s ease; 
+    }
+    .heart-bank { 
+      display: flex;
+       flex-wrap: wrap;
+        gap: 8px;
+         margin-top: 12px;
+         }
+    .heart-btn { 
+      font-size: 24px; 
+      line-height: 1; 
+      background: transparent;
+       border: none; 
+       cursor: pointer; 
+       filter: drop-shadow(0 6px 10px rgba(255, 105, 180, .35)); 
+       transition: transform .15s ease;
+       }
+    .heart-btn:hover { 
+      transform: scale(1.2) rotate(-6deg);
+     }
+    .facts { 
+      display: grid;
+       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 14px;
+       }
+    .fact {
+       background: rgba(255,255,255,.75);
+        border-radius: 16px; 
+        padding: 14px;
+         box-shadow: var(--shadow-soft);
+         }
+    .secret-msg { 
+      margin-top: 10px;
+       font-weight: 700;
+       }
+    .fav-grid {
+       display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+         gap: 12px;
+         }
+    .fav-card { 
+      position: relative;
+       border: none;
+        background: rgba(255,255,255,.74); 
+        border-radius: 18px; 
+        padding: 18px; 
+        text-align: center;
+         perspective: 800px;
+          box-shadow: var(--shadow-soft);
+           cursor: pointer;
+           }
+    .fav-card .front, .fav-card .back { 
+      transition: transform .5s; 
+      transform-style: preserve-3d;
+       backface-visibility: hidden;
+        font-weight: 700;
+       }
+    .fav-card .back { 
+      position: absolute;
+       inset: 0;
+        display: grid;
+         place-items: center;
+          transform: rotateY(180deg);
+         }
+    .fav-card.flip .front {
+       transform: rotateY(180deg);
+       }
+    .fav-card.flip .back { 
+      transform: rotateY(0deg);
+     }
+ 
+    .gallery {
+
+       display: grid; 
+       display: flex;
+       grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); 
+       gap: 12px;
+       }
+    .frame {
+       background: rgba(255,255,255,.65); 
+       border: 2px dashed #ffb3c7; 
+       border-radius: 16px; 
+       height: 160px; 
+       display: grid; 
+       place-items: center;
+       }
+    .placeholder { 
+      text-align: center;
+       opacity: .75; 
+      }
+    .themed-section {
+       padding: 42px 0;
+       }
+    .sparkle { 
+      position: fixed;
+       width: 6px;
+        height: 6px;
+         border-radius: 50%;
+          pointer-events: none;
+           animation: sparkle 1.6s ease forwards;
+           }
+    @keyframes sparkle {
+      0% {
+         transform: translateY(0) scale(0.6);
+          opacity: 0.9; 
+        }
+      100% {
+         transform: translateY(-40px) scale(1.4); 
+         opacity: 0;
+         }
+    }
+    .float-heart {
+       position: fixed;
+        font-size: 18px; 
+        pointer-events: none;
+         animation: floatUp 1.2s ease-out forwards;
+         }
+    @keyframes floatUp {
+      0% {
+         transform: translateY(0) scale(1);
+          opacity: 1; 
+        }
+      100% { 
+        transform: translateY(-60px) scale(1.2);
+         opacity: 0;
+         }
+    }
+    .fade-in {
+       opacity: 0; 
+       transform: translateY(6px);
+        transition: all .7s ease;
+       }
+    .fade-in.visible {
+       opacity: 1;
+        transform: translateY(0);
+       }
+    footer {
+       text-align: center;
+        padding: 60px 0 80px;
+       }
+    .end-hearts {
+       display: flex;
+        justify-content: center;
+         gap: 12px;
+          margin-top: 12px;
+         }
+    .end-heart {
+       font-size: 28px;
+        cursor: pointer;
+         transition: transform .15s ease;
+         }
+    .end-heart:hover { 
+      transform: translateY(-4px) scale(1.15);
+     }
+    /* Easter egg invisible clickers in corners */
+    .easter-egg {
+       position: fixed;
+        width: 20px;
+         height: 20px; 
+         opacity: 0.04;
+         }
+    .easter-egg:nth-child(4n+1) { left: 8px; top: 8px; }
+    .easter-egg:nth-child(4n+2) { right: 8px; top: 8px; }
+    .easter-egg:nth-child(4n+3) { left: 8px; bottom: 8px; }
+    .easter-egg:nth-child(4n+4) { right: 8px; bottom: 8px; }
+    .bg-pink-1 {
+  background: linear-gradient(135deg, rgba(255,239, 254, 0.95), rgba(253, 236, 255, 0.95));
+}
+.bg-pink-2 {
+  background: linear-gradient(135deg, rgba(255,238, 253, 0.95), rgba(251, 237, 255, 0.95));
+}
+.bg-pink-3 {
+  background: linear-gradient(135deg, rgba(255,237, 252, 0.95), rgba(249, 238, 255, 0.95));
+}
+.bg-pink-4 {
+  background: linear-gradient(135deg, rgba(255,236, 251, 0.95), rgba(247, 239, 254, 0.95));
+}
+.bg-pink-5 {
+  background: linear-gradient(135deg, rgba(255,235, 250, 0.95), rgba(245, 240, 254, 0.95));
+}
+.bg-pink-6 {
+  background: linear-gradient(135deg, rgba(255,234, 249, 0.95), rgba(243, 241, 254, 0.95));
+}
+.bg-pink-7 {
+  background: linear-gradient(135deg, rgba(255,233, 248, 0.95), rgba(241, 242, 254, 0.95));
+}
+.bg-pink-8 {
+  background: linear-gradient(135deg, rgba(255,232, 247, 0.95), rgba(239, 243, 253, 0.95));
+}
+.bg-pink-9 {
+  background: linear-gradient(135deg, rgba(255,231, 246, 0.95), rgba(237, 244, 253, 0.95));
+}
+.bg-pink-10 {
+  background: linear-gradient(135deg, rgba(255,230, 245, 0.95), rgba(235, 245, 253, 0.95));
+}
+.bg-pink-11 {
+  background: linear-gradient(135deg, rgba(255,229, 244, 0.95), rgba(233, 246, 253, 0.95));
+}
+.bg-pink-12 {
+  background: linear-gradient(135deg, rgba(255,228, 243, 0.95), rgba(231, 247, 252, 0.95));
+}
+.bg-pink-13 {
+  background: linear-gradient(135deg, rgba(255,227, 242, 0.95), rgba(229, 248, 252, 0.95));
+}
+.bg-pink-14 {
+  background: linear-gradient(135deg, rgba(255,226, 241, 0.95), rgba(227, 249, 252, 0.95));
+}
+.bg-pink-15 {
+  background: linear-gradient(135deg, rgba(255,225, 240, 0.95), rgba(225, 235, 252, 0.95));
+}
+.bg-pink-16 {
+  background: linear-gradient(135deg, rgba(255,224, 239, 0.95), rgba(223, 236, 251, 0.95));
+}
+.bg-pink-17 {
+  background: linear-gradient(135deg, rgba(255,223, 238, 0.95), rgba(221, 237, 251, 0.95));
+}
+.bg-pink-18 {
+  background: linear-gradient(135deg, rgba(255,222, 237, 0.95), rgba(219, 238, 251, 0.95));
+}
+.bg-pink-19 {
+  background: linear-gradient(135deg, rgba(255,221, 236, 0.95), rgba(217, 239, 251, 0.95));
+}
+.bg-pink-20 {
+  background: linear-gradient(135deg, rgba(255,220, 235, 0.95), rgba(215, 240, 250, 0.95));
+}
+.bg-pink-21 {
+  background: linear-gradient(135deg, rgba(255,219, 234, 0.95), rgba(213, 241, 250, 0.95));
+}
+.bg-pink-22 {
+  background: linear-gradient(135deg, rgba(255,218, 233, 0.95), rgba(211, 242, 250, 0.95));
+}
+.bg-pink-23 {
+  background: linear-gradient(135deg, rgba(255,217, 232, 0.95), rgba(209, 243, 250, 0.95));
+}
+.bg-pink-24 {
+  background: linear-gradient(135deg, rgba(255,216, 231, 0.95), rgba(207, 244, 249, 0.95));
+}
+.bg-pink-25 {
+  background: linear-gradient(135deg, rgba(255,215, 230, 0.95), rgba(205, 245, 249, 0.95));
+}
+.bg-pink-26 {
+  background: linear-gradient(135deg, rgba(255,214, 229, 0.95), rgba(203, 246, 249, 0.95));
+}
+.bg-pink-27 {
+  background: linear-gradient(135deg, rgba(255,213, 228, 0.95), rgba(201, 247, 249, 0.95));
+}
+.bg-pink-28 {
+  background: linear-gradient(135deg, rgba(255,212, 227, 0.95), rgba(199, 248, 248, 0.95));
+}
+.bg-pink-29 {
+  background: linear-gradient(135deg, rgba(255,211, 226, 0.95), rgba(197, 249, 248, 0.95));
+}
+.bg-pink-30 {
+  background: linear-gradient(135deg, rgba(255,210, 255, 0.95), rgba(195, 235, 248, 0.95));
+}
+.bg-pink-31 {
+  background: linear-gradient(135deg, rgba(255,209, 254, 0.95), rgba(193, 236, 248, 0.95));
+}
+.bg-pink-32 {
+  background: linear-gradient(135deg, rgba(255,208, 253, 0.95), rgba(191, 237, 247, 0.95));
+}
+.bg-pink-33 {
+  background: linear-gradient(135deg, rgba(255,207, 252, 0.95), rgba(189, 238, 247, 0.95));
+}
+.bg-pink-34 {
+  background: linear-gradient(135deg, rgba(255,206, 251, 0.95), rgba(187, 239, 247, 0.95));
+}
+.bg-pink-35 {
+  background: linear-gradient(135deg, rgba(255,205, 250, 0.95), rgba(185, 240, 247, 0.95));
+}
+.bg-pink-36 {
+  background: linear-gradient(135deg, rgba(255,204, 249, 0.95), rgba(183, 241, 246, 0.95));
+}
+.bg-pink-37 {
+  background: linear-gradient(135deg, rgba(255,203, 248, 0.95), rgba(181, 242, 246, 0.95));
+}
+.bg-pink-38 {
+  background: linear-gradient(135deg, rgba(255,202, 247, 0.95), rgba(179, 243, 246, 0.95));
+}
+.bg-pink-39 {
+  background: linear-gradient(135deg, rgba(255,201, 246, 0.95), rgba(177, 244, 246, 0.95));
+}
+.bg-pink-40 {
+  background: linear-gradient(135deg, rgba(255,200, 245, 0.95), rgba(175, 245, 245, 0.95));
+}
+.bg-pink-41 {
+  background: linear-gradient(135deg, rgba(255,199, 244, 0.95), rgba(173, 246, 245, 0.95));
+}
+.bg-pink-42 {
+  background: linear-gradient(135deg, rgba(255,198, 243, 0.95), rgba(171, 247, 245, 0.95));
+}
+.bg-pink-43 {
+  background: linear-gradient(135deg, rgba(255,197, 242, 0.95), rgba(169, 248, 245, 0.95));
+}
+.bg-pink-44 {
+  background: linear-gradient(135deg, rgba(255,196, 241, 0.95), rgba(167, 249, 244, 0.95));
+}
+.bg-pink-45 {
+  background: linear-gradient(135deg, rgba(255,195, 240, 0.95), rgba(165, 235, 244, 0.95));
+}
+.bg-pink-46 {
+  background: linear-gradient(135deg, rgba(255,194, 239, 0.95), rgba(163, 236, 244, 0.95));
+}
+.bg-pink-47 {
+  background: linear-gradient(135deg, rgba(255,193, 238, 0.95), rgba(161, 237, 244, 0.95));
+}
+.bg-pink-48 {
+  background: linear-gradient(135deg, rgba(255,192, 237, 0.95), rgba(159, 238, 243, 0.95));
+}
+.bg-pink-49 {
+  background: linear-gradient(135deg, rgba(255,191, 236, 0.95), rgba(157, 239, 243, 0.95));
+}
+.bg-pink-50 {
+  background: linear-gradient(135deg, rgba(255,190, 235, 0.95), rgba(155, 240, 243, 0.95));
+}
+.bg-pink-51 {
+  background: linear-gradient(135deg, rgba(255,189, 234, 0.95), rgba(153, 241, 243, 0.95));
+}
+.bg-pink-52 {
+  background: linear-gradient(135deg, rgba(255,188, 233, 0.95), rgba(151, 242, 242, 0.95));
+}
+.bg-pink-53 {
+  background: linear-gradient(135deg, rgba(255,187, 232, 0.95), rgba(149, 243, 242, 0.95));
+}
+.bg-pink-54 {
+  background: linear-gradient(135deg, rgba(255,186, 231, 0.95), rgba(147, 244, 242, 0.95));
+}
+.bg-pink-55 {
+  background: linear-gradient(135deg, rgba(255,185, 230, 0.95), rgba(145, 245, 242, 0.95));
+}
+.bg-pink-56 {
+  background: linear-gradient(135deg, rgba(255,184, 229, 0.95), rgba(143, 246, 241, 0.95));
+}
+.bg-pink-57 {
+  background: linear-gradient(135deg, rgba(255,183, 228, 0.95), rgba(141, 247, 241, 0.95));
+}
+.bg-pink-58 {
+  background: linear-gradient(135deg, rgba(255,182, 227, 0.95), rgba(139, 248, 241, 0.95));
+}
+.bg-pink-59 {
+  background: linear-gradient(135deg, rgba(255,181, 226, 0.95), rgba(137, 249, 241, 0.95));
+}
+.bg-pink-60 {
+  background: linear-gradient(135deg, rgba(255,180, 255, 0.95), rgba(135, 235, 240, 0.95));
+}
+  
+@media (max-width: 600px) {
+  h1 {
+     font-size: 1.8rem !important; 
+    }
+  h2 { 
+    font-size: 1.4rem !important;
+   }
+  h3 { 
+    font-size: 1.1rem !important;
+   }
+  .container {
+     padding: 16px !important; 
+    }
+  .age-grid {
+     grid-template-columns: repeat(2, 1fr) !important;
+      gap: 8px !important;
+     }
+  .cards, .facts, .fav-grid, .gallery {
+     grid-template-columns: 1fr !important;
+     }
+  .btn {
+     padding: 10px 14px !important;
+      font-size: 0.9rem !important; 
+    }
+  .slideshow {
+     height: 350px !important;
+     }
+  .frame {
+     height: 120px !important;
+     }
+  nav.nav-links {
+     flex-direction: column;
+      align-items: flex-start;
+       gap: 6px !important;
+       }
+  .nav-links a {
+     font-size: 0.85rem !important; 
+     padding: 6px 10px !important; 
+    }
+  .themed-section { 
+    padding: 24px 0 !important; 
+  }
+}
+
+
+.mobile-hide { 
+    background: linear-gradient(135deg, rgba(255,180, 255, 0.95), rgba(135, 235, 240, 0.95)); 
+  }
+
+@media (max-width: 600px) {
+  .mobile-hide {
+    display: none !important;
+  }
+}
+
+
+
+/* --- extra from v3 --- */
+
+:root{
+  --pink:#ffd6e7;
+  --pink2:#ffc1dc;
+  --pink3:#ffb2d2;
+  --ink:#3c2a35;
+  --muted:#7a5869;
+  --white:#fff;
+  --panel:#fff7fb;
+  --line:#f6cfe0;
+  --acc:#ff76b6;
+  --acc2:#ffa3ce
+}
+*{
+  box-sizing:border-box
+}
+html,body{
+  height:100%
+}
+body{
+  margin:0;
+  font-family:ui-rounded,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial;
+  color:var(--ink);
+  background:
+radial-gradient(1000px 600px at 80% -10%,rgba(255,214,231,.7),transparent 60%),
+radial-gradient(1000px 600px at 10% 110%,rgba(255,178,210,.65),transparent 60%),
+linear-gradient(160deg,#fff 0%,#ffe7f1 60%,#ffd6e7 100%);
+}
+header{
+  padding:28px 16px 10px;
+  text-align:center;
+  position:relative
+}
+.title{
+  font-weight:900;
+  letter-spacing:.4px;
+  font-size:clamp(2rem,7vw,3.2rem);
+  background:linear-gradient(90deg,#ff76b6,#ffb2d2,#ffa3ce);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent
+}
+.subtitle{
+  color:var(--muted);
+  margin-top:6px
+}
+.controls{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  justify-content:center;
+  margin-top:14px
+}
+.btn{
+  appearance:none;
+  border:1px solid var(--line);
+  background:var(--panel);
+  color:var(--ink);
+  padding:.8rem 1.05rem;
+  border-radius:16px;
+  cursor:pointer;
+  box-shadow:0 8px 20px rgba(255,118,182,.12);
+  font-weight:600
+}
+.btn:active{
+  transform:translateY(1px)
+}
+.grid{
+  max-width:1200px;
+  margin:0 auto;
+  padding:12px;
+  display:grid;
+  gap:12px
+}
+@media(min-width:1024px){.grid{grid-template-columns:1.1fr .9fr}}
+.card{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:14px;
+  box-shadow:0 6px 30px rgba(255,118,182,.15)
+}
+h2{
+  margin:6px 0 10px;
+  font-size:clamp(1.1rem,2.8vw,1.6rem);
+  color:#402532
+}
+.row{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  align-items:center
+}
+.center{
+  text-align:center
+}
+.countdown{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+  gap:8px
+}
+.time{
+  background:#fff;
+  border:1px solid var(--line);
+  padding:12px;
+  border-radius:14px;
+  text-align:center
+}
+.time b{
+  display:block;
+  font-size:1.6rem;
+  color:#402532
+}
+.agegrid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:8px
+}
+.box{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:12px;
+  text-align:center
+}
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:10px
+}
+.gallery img{
+  width:100%;
+  height:160px;
+  object-fit:contain;
+  border-radius:12px;
+  border:1px solid var(--line);
+  background:linear-gradient(135deg,#ffe7f1,#fff)
+}
+.tabs{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;justify-content:
+  center;margin:10px 0
+}
+.tab{
+  background:#fff
+}
+.panel{
+  display:none
+}
+.panel.active{
+  display:block
+}
+.chip{
+  display:inline-block;
+  padding:.4rem .7rem;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:#fff;
+  margin:2px;
+  font-weight:600
+}
+.toast{
+  position:fixed;
+  top:16px;
+  right:16px;
+  background:#402532;
+  color:#ffe3f0;
+  padding:10px 12px;
+  border-radius:12px;
+  border:1px solid #2a1a22;
+  display:none;
+  z-index:20
+}
+#fx{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0
+}
+dialog{
+  border:none;
+  padding:0;
+  background:transparent
+}
+/* Tic Tac Toe */
+#tttBoard{
+  display:grid;
+  grid-template-columns:repeat(3,90px);
+  gap:8px;
+  justify-content:center;
+  margin-top:8px
+}
+.tttCell{
+  width:90px;
+  height:90px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:#fff;
+  display:grid;
+  place-items:center;
+  font-size:2rem;
+  cursor:pointer
+}
+/* Memory */
+.memory-grid{
+  display:grid;
+  grid-template-columns:repeat(6,60px);
+  gap:8px;
+  justify-content:center
+}
+.memory-card{
+  width:60px;
+  height:80px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:#fff;
+  display:grid;
+  place-items:center;
+  cursor:pointer;
+  user-select:none;
+  transition:transform .2s
+}
+.memory-card.open{
+  transform:scale(1.04);
+}
+.word{
+  font-size:1.6rem;
+  font-weight:800
+}
+input,textarea{
+  font:inherit;
+  padding:.7rem .9rem;
+  border-radius:12px;
+  border:1px solid var(--line);
+  background:#fff;
+  min-width:220px
+}
+footer{
+  padding:40px 12px;
+  text-align:center;
+  color:var(--muted)
+}
+
+</style>
+</head>
+<body>
+
+<span class="easter-egg" onclick="revealEgg(1)" title="💗 secret 1"></span>
+<span class="easter-egg" onclick="revealEgg(2)" title="💗 secret 2"></span>
+<span class="easter-egg" onclick="revealEgg(3)" title="💗 secret 3"></span>
+<span class="easter-egg" onclick="revealEgg(4)" title="💗 secret 4"></span>
+<span class="easter-egg" onclick="revealEgg(5)" title="💗 secret 5"></span>
+<span class="easter-egg" onclick="revealEgg(6)" title="💗 secret 6"></span>
+<span class="easter-egg" onclick="revealEgg(7)" title="💗 secret 7"></span>
+<span class="easter-egg" onclick="revealEgg(8)" title="💗 secret 8"></span>
+<span class="easter-egg" onclick="revealEgg(9)" title="💗 secret 9"></span>
+<span class="easter-egg" onclick="revealEgg(10)" title="💗 secret 10"></span>
+<span class="easter-egg" onclick="revealEgg(11)" title="💗 secret 11"></span>
+<span class="easter-egg" onclick="revealEgg(12)" title="💗 secret 12"></span>
+<span class="easter-egg" onclick="revealEgg(13)" title="💗 secret 13"></span>
+<span class="easter-egg" onclick="revealEgg(14)" title="💗 secret 14"></span>
+<span class="easter-egg" onclick="revealEgg(15)" title="💗 secret 15"></span>
+<span class="easter-egg" onclick="revealEgg(16)" title="💗 secret 16"></span>
+<span class="easter-egg" onclick="revealEgg(17)" title="💗 secret 17"></span>
+<span class="easter-egg" onclick="revealEgg(18)" title="💗 secret 18"></span>
+<span class="easter-egg" onclick="revealEgg(19)" title="💗 secret 19"></span>
+<span class="easter-egg" onclick="revealEgg(20)" title="💗 secret 20"></span>
+<span class="easter-egg" onclick="revealEgg(21)" title="💗 secret 21"></span>
+<span class="easter-egg" onclick="revealEgg(22)" title="💗 secret 22"></span>
+<span class="easter-egg" onclick="revealEgg(23)" title="💗 secret 23"></span>
+<span class="easter-egg" onclick="revealEgg(24)" title="💗 secret 24"></span>
+<span class="easter-egg" onclick="revealEgg(25)" title="💗 secret 25"></span>
+<span class="easter-egg" onclick="revealEgg(26)" title="💗 secret 26"></span>
+<span class="easter-egg" onclick="revealEgg(27)" title="💗 secret 27"></span>
+<span class="easter-egg" onclick="revealEgg(28)" title="💗 secret 28"></span>
+<span class="easter-egg" onclick="revealEgg(29)" title="💗 secret 29"></span>
+<span class="easter-egg" onclick="revealEgg(30)" title="💗 secret 30"></span>
+
+
+<section id="welcome" class="hero section bg-pink-1">
+  <div class="container">
+    <h1 class="title glow">Happy 16 Birthday, Areeba! ❤🌸</h1>
+    <p class="subtitle">"Happy Birthday شہزادی your presence makes the world brighter every day!"
+</p>
+    <button class="btn" onclick="document.querySelector('#age').scrollIntoView({behavior:'smooth'})">Start the Journey ↓</button>
+  </div>
+</section>
+
+<section id="age" class="section bg-pink-2">
+  <div class="container">
+    <h1 class="glow">Each and every moment of your life is beautiful. princess✨</h1>
+    <p class="subtle"><B>From the moment you arrived from heaven, you’ve been a blessing to this world.</B></p>
+    <div class="age-grid" id="age-grid">
+      <div class="age-item"><strong id="years">–</strong><span>Years</span></div>
+      <div class="age-item"><strong id="months">–</strong><span>Months</span></div>
+      <div class="age-item"><strong id="days">–</strong><span>Days</span></div>
+      <div class="age-item"><strong id="hours">–</strong><span>Hours</span></div>
+      <div class="age-item"><strong id="minutes">–</strong><span>Minutes</span></div>
+      <div class="age-item"><strong id="seconds">–</strong><span>Seconds</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="slideshow" class="section bg-pink-3">
+  <div class="container">
+    <h4 class="glow">Sweet Moments</h4>
+    <div class="slideshow" aria-live="polite">
+
+    <div class="slide bg-pink-2 fade">
+      <div class="slide-content">
+        <h5>From a tiny princess to a</h5>
+         <img src="../WhatsApp Image 2025-08-23 at 6.14.55 AM.jpeg" alt="">
+      </div>
+    </div>
+
+
+    <div class="slide bg-pink-3 fade">
+      <div class="slide-content">
+        <h5>graceful hijabi queen</h5>
+        <img src="../WhatsApp Image 2025-08-23 at 6.17.46 AM.jpeg" alt="">
+      </div>
+    </div>
+
+
+
+
+ 
+
+
+   
+
+
+
+ 
+
+    </div>
+  </div>
+</section>
+
+<section id="special" class="section bg-pink-4">
+  <div class="container">
+    <h2 class="glow">Why You’re Special</h2>
+    <div class="cards">
+
+      <div class="card hover-pop">
+        <div class="card-inner">
+          <img src="../WhatsApp Image 2025-08-23 at 7.18.35 PM.jpeg" alt="">
+          <h3>Kindness that feels like home</h3>
+          <p>warm, safe, and real</p>
+        </div>
+      </div>
+
+            <div class="card hover-pop">
+        <div class="card-inner">
+            <img src="./77d909f4-bc0e-4bff-be20-54e52ce0a292.jpg" alt="">
+          <h3>Loyalty that doesn’t speak loud, just hugs tighter.</h3>
+          <p>Loyalty that hugs like a friend — warm, quiet, and always there..</p>
+        </div>
+      </div>
+
+
+      <div class="card hover-pop">
+        <div class="card-inner">
+            <img src="./165d91cbb3270345bcd7a962557e5206.jpg" alt="">
+          <h3>A smile that melts rainy days</h3>
+          <p>I try to make you laugh, hoping you’ll fall for me  but every time, it’s me who falls even deeper</p>
+        </div>
+      </div>
+
+
+
+      <div class="card hover-pop">
+        <div class="card-inner">
+            <img src="./WhatsApp Image 2025-08-24 at 4.16.36 PM.jpeg" alt="">
+          <h3>A heart that hears the quiet</h3>
+          <p>our heart don’t need words; they listen to the quiet..</p>
+        </div>
+      </div>
+
+
+
+
+
+    </div>
+  </div>
+</section>
+
+<section id="love-meter" class="section bg-pink-5">
+  <div class="container">
+    <h2 class="glow">في الدنيا والآخرة💗</h2>
+    <p class="subtle">Sometimes love has its ups and downs, but we keep giving our best — In sha Allah, we’ll make it to 100% like this meter. <br><b>We’re not just aiming for love in this life — but fi dunya wa akhira, In sha Allah.</b><br><b>Tap on Heart</b></p>
+    <div class="meter-wrap" aria-label="Love meter">
+      <div class="meter" id="meter"></div>
+    </div>
+    <div class="heart-bank" id="heart-bank"></div>
+    <p id="meter-label"><strong>0%</strong> love power</p>
+  </div>
+</section>
+
+<section id="facts" class="section bg-pink-6">
+  <div class="container">
+    <h2 class="glow">Birthday Facts 🎂</h2>
+    <div class="facts">
+      <div class="fact"><strong>Day of Week:</strong> <span id="fact-dow">–</span></div>
+      <div class="fact"><strong>Birthstone:</strong> <span id="fact-stone">Sapphire</span></div>
+      <div class="fact"><strong>Birth Flower:</strong> <span id="fact-flower">Aster / Morning Glory</span></div>
+      <div class="fact"><strong>Week of Year:</strong> <span id="fact-week">–</span></div>
+      <div class="fact"><strong>Day of Year:</strong> <span id="fact-doy">–</span></div>
+      <div class="fact"><strong>Total Days Lived:</strong> <span id="fact-days">–</span></div>
+      <div class="fact"><strong>Total Hours Lived:</strong> <span id="fact-hours">–</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="surprise" class="section bg-pink-7">
+  <div class="container">
+    <h2 class="glow"> Two Surprise Messages 💌</h2>
+    <button class="btn" onclick="showSurprise()">Reveal a Surprise</button>
+    <p id="surprise-box" class="fade-in" aria-live="polite"></p>
+  </div>
+</section>
+
+<section id="poems" class="section bg-pink-8">
+  <div class="container">
+    <h2 class="glow">Overthinking Ka Solution: Mera Pyaar 🧁</h2>
+    <button class="btn" onclick="generatePoem()">Reveal solution</button>
+    <div id="poem-area" class="fade-in" style="margin-top: 10px;"></div>
+  </div>
+</section>
+
+<section id="compliments" class="section bg-pink-9">
+  <div class="container">
+    <h2 class="glow">Dil Ki Sun Liya kariye Varna Punch Line Ready Hai😅😅😄
+      
+    </h2>
+    <button class="btn" onclick="giveCompliment()">Reveal Punch line </button>
+    <p id="compliment-box" class="fade-in" aria-live="polite"></p>
+  </div>
+</section>
+
+<section id="favorites" class="section bg-pink-10">G
+  <div class="container">
+    <h2 class="glow">Your Favorite Things</h2>
+    <div class="fav-grid">
+
+      <button class="fav-card hover-pop" onclick="flipFavorite(this)">
+        <div class="front">🎀 Color</div>
+        <div class="back">dark blue & black</div>
+      </button>
+
+
+      <button class="fav-card hover-pop" onclick="flipFavorite(this)">
+        <div class="front">🌺 Flower</div>
+        <div class="back">Hibiscus flower</div>
+      </button>
+
+
+      <button class="fav-card hover-pop" onclick="flipFavorite(this)">
+        <div class="front">🐱 Pet</div>
+        <div class="back">Cat</div>
+      </button>
+
+
+      <button class="fav-card hover-pop" onclick="flipFavorite(this)">
+        <div class="front">🍓 Sweet</div>
+        <div class="back">chocolate</div>
+      </button>
+
+
+      <button class="fav-card hover-pop" onclick="flipFavorite(this)">
+        <div class="front">🌷 Season</div>
+        <div class="back">winter</div>
+      </button>
+
+
+      <button class="fav-card hover-pop" onclick="flipFavorite(this)">
+        <div class="front">🎨 Hobby</div>
+        <div class="back">Drawing</div>
+      </button>
+
+
+      <button class="fav-card hover-pop" onclick="flipFavorite(this)">
+        <div class="front">🥰favourite thing</div>
+        <div class="back">Loving me </div>
+      </button>
+
+
+      <button class="fav-card hover-pop" onclick="flipFavorite(this)">
+        <div class="front">😎Vibe</div>
+        <div class="back">nasheeds&football</div>
+      </button>
+
+
+      <button class="fav-card hover-pop" onclick="flipFavorite(this)">
+        <div class="front">🌤️ Weather</div>
+        <div class="back">dark weather</div>
+      </button>
+
+
+      <button class="fav-card hover-pop" onclick="flipFavorite(this)">
+        <div class="front">🛋️ Place</div>
+        <div class="back">home</div>
+      </button>
+
+    </div>
+    <p class="subtle">I love you more than i express</p>
+  </div>
+</section>
+
+<section id="gallery" class="section bg-pink-11">
+  <div class="container">
+    <h2 class="glow">💕</h2>
+    <div class="gallery">
+
+      <div class="frame hover-pop">
+        <div class="placeholder">
+          <span><img src="./55fd2d12-420f-4b58-a4a4-1de5ccf06dad.jpg" alt=""></span>
+          <small>In sha Allah💕</small>
+        </div>
+      </div>
+
+
+      <div class="frame hover-pop">
+        <div class="placeholder">
+          <span><img src="./8c6863159c85624077f32c20eb2af3d7.gif" alt=""></span>
+          <small>US😳</small>
+        </div>
+      </div>
+
+
+      <div class="frame hover-pop">
+        <div class="placeholder">
+          <span><img src="./download.gif" alt=""></span>
+          <small>US😅</small>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="game" class="section bg-pink-12">
+  <div class="container">
+    <h2 class="glow">Mini-Game: Catch My herat ❤</h2>
+    <p class="subtle">A little clickable herat will pop up randomly. Catch it for points!</p>
+    <div id="game-area" style="position: relative; height: 240px; background: rgba(255,255,255,.6); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-soft);">
+      <span id="star" style="position:absolute; font-size: 28px; cursor: pointer;">❤</span>
+    </div>
+    <p>Score: <strong id="score">0</strong></p>
+  </div>
+</section>
+
+
+<section id="pink-panel-1" class="themed-section bg-pink-2">
+  <div class="container">
+    <h2 class="glow">1.Little Note🥰</h2>
+    <p class="fade-in">Dear Areeba, You are my whole world..</p>
+    <button class="btn btn-outline" onclick="revealPanelMessage(1)">Open a tiny secret</button>
+    <p id="panel-msg-1" class="secret-msg" aria-live="polite"></p>
+  </div>
+</section>
+
+
+<section id="pink-panel-2" class="themed-section bg-pink-3">
+  <div class="container">
+    <h2 class="glow">2.Little Note😊</h2>
+    <p class="fade-in">Dear gudiya, I smile because of you..</p>
+    <button class="btn btn-outline" onclick="revealPanelMessage(2)">Open a tiny secret</button>
+    <p id="panel-msg-2" class="secret-msg" aria-live="polite"></p>
+  </div>
+</section>
+
+
+<section id="pink-panel-3" class="themed-section bg-pink-4">
+  <div class="container">
+    <h2 class="glow">3.Little Note😘</h2>
+    <p class="fade-in">Dear Ammu ji, My heart chose only you</p>
+    <button class="btn btn-outline" onclick="revealPanelMessage(3)">Open a tiny secret</button>
+    <p id="panel-msg-3" class="secret-msg" aria-live="polite"></p>
+  </div>
+</section>
+
+
+<section id="pink-panel-4" class="themed-section bg-pink-5">
+  <div class="container">
+    <h2 class="glow">4.Little Note😍</h2>
+    <p class="fade-in">Dear Shahzadi, Forever starts with your name..</p>
+    <button class="btn btn-outline" onclick="revealPanelMessage(4)">Open a tiny secret</button>
+    <p id="panel-msg-4" class="secret-msg" aria-live="polite"></p>
+  </div>
+</section>
+
+
+<section id="pink-panel-5" class="themed-section bg-pink-6">
+  <div class="container">
+    <h2 class="glow">5.Little Note💕</h2>
+    <p class="fade-in">Dear princess, You complete me so perfectly..</p>
+    <button class="btn btn-outline" onclick="revealPanelMessage(5)">Open a tiny secret</button>
+    <p id="panel-msg-5" class="secret-msg" aria-live="polite"></p>
+  </div>
+</section>
+
+
+<section id="pink-panel-6" class="themed-section bg-pink-7">
+  <div class="container">
+    <h2 class="glow">6.Little Note💖</h2>
+    <p class="fade-in">Dear Angry bird, I’m better with you around..</p>
+    <button class="btn btn-outline" onclick="revealPanelMessage(6)">Open a tiny secret</button>
+    <p id="panel-msg-6" class="secret-msg" aria-live="polite"></p>
+  </div>
+</section>
+
+
+<section id="pink-panel-7" class="themed-section bg-pink-8">
+  <div class="container">
+    <h2 class="glow">7.Little Note😉</h2>
+    <p class="fade-in">Dear jaan, Every moment means with you..</p>
+    <button class="btn btn-outline" onclick="revealPanelMessage(7)">Open a tiny secret</button>
+    <p id="panel-msg-7" class="secret-msg" aria-live="polite"></p>
+  </div>
+</section>
+
+
+<section id="pink-panel-8" class="themed-section bg-pink-9">
+  <div class="container">
+    <h2 class="glow">8.Little Note🎉</h2>
+    <p class="fade-in">Dear girl, You're my peace and home..</p>
+    <button class="btn btn-outline" onclick="revealPanelMessage(8)">Open a tiny secret</button>
+    <p id="panel-msg-8" class="secret-msg" aria-live="polite"></p>
+  </div>
+</section>
+
+
+<section id="pink-panel-9" class="themed-section bg-pink-10">
+  <div class="container">
+    <h2 class="glow">9.Little Note🤞</h2>
+    <p class="fade-in">Dear Madam ji,I love you beyond words..</p>
+    <button class="btn btn-outline" onclick="revealPanelMessage(9)">Open a tiny secret</button>
+    <p id="panel-msg-9" class="secret-msg" aria-live="polite"></p>
+  </div>
+</section>
+
+
+<section id="pink-panel-10" class="themed-section bg-pink-11">
+  <div class="container">
+    <h2 class="glow">10.Little Note💕</h2>
+    <p class="fade-in">Dear Donut, Us — my favorite love story.</p>
+    <button class="btn btn-outline" onclick="revealPanelMessage(10)">Open a tiny secret</button>
+    <p id="panel-msg-10" class="secret-msg" aria-live="polite"></p>
+  </div>
+</section>
+
+<section id="pink-panel-11" class="themed-section bg-pink-12">
+  <div class="container">
+    <h2 class="glow">11.Little Note💕</h2>
+    <p class="fade-in">Dear Donut, Us — my favorite love story.</p>
+    <button class="btn btn-outline" onclick="revealPanelMessage(11)">Open a tiny secret</button>
+    <p id="panel-msg-11" class="secret-msg" aria-live="polite"></p>
+  </div>
+</section>
+
+<section id="pink-panel-12" class="themed-section bg-pink-13">
+  <div class="container">
+    <h2 class="glow">12.Little Note💕</h2>
+    <p class="fade-in">Dear Donut, Us — my favorite love story.</p>
+    <button class="btn btn-outline" onclick="revealPanelMessage(12)">Open a tiny secret</button>
+    <p id="panel-msg-12" class="secret-msg" aria-live="polite"></p>
+  </div>
+</section>
+
+<section id="pink-panel-13" class="themed-section bg-pink-14">
+  <div class="container">
+    <h2 class="glow">13.Little Note💕</h2>
+    <p class="fade-in">Dear Donut, Us — my favorite love story.</p>
+    <button class="btn btn-outline" onclick="revealPanelMessage(13)">Open a tiny secret</button>
+    <p id="panel-msg-13" class="secret-msg" aria-live="polite"></p>
+  </div>
+</section>
+
+<section id="pink-panel-14" class="themed-section bg-pink-15">
+  <div class="container">
+    <h2 class="glow">14.Little Note💕</h2>
+    <p class="fade-in">Dear Donut, Us — my favorite love story.</p>
+    <button class="btn btn-outline" onclick="revealPanelMessage(14)">Open a tiny secret</button>
+    <p id="panel-msg-14" class="secret-msg" aria-live="polite"></p>
+  </div>
+</section>
+
+<section id="pink-panel-15" class="themed-section bg-pink-16">
+  <div class="container">
+    <h2 class="glow">15.Little Note💕</h2>
+    <p class="fade-in">Dear Donut, Us — my favorite love story.</p>
+    <button class="btn btn-outline" onclick="revealPanelMessage(15)">Open a tiny secret</button>
+    <p id="panel-msg-15" class="secret-msg" aria-live="polite"></p>
+  </div>
+</section>
+
+<section id="pink-panel-16" class="themed-section bg-pink-17">
+  <div class="container">
+    <h2 class="glow">16.Little Note💕</h2>
+    <p class="fade-in">Dear Donut, Us — my favorite love story.</p>
+    <button class="btn btn-outline" onclick="revealPanelMessage(16)">Open a tiny secret</button>
+    <p id="panel-msg-16" class="secret-msg" aria-live="polite"></p>
+  </div>
+</section>
+
+
+
+
+<script>
+  // ===== Floating Heart & Sparkle Effects (gentle) =====
+  let lastHeart = 0;
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('.btn, .heart-btn, .end-heart, .fav-card, #star')) return; // not on UI buttons
+    const now = performance.now();
+    if (now - lastHeart < 120) return; // gentle, not chaotic
+    lastHeart = now;
+    spawnHeart(e);
+    spawnSparkles(e);
+  });
+  function spawnHeart(e) {
+    const heart = document.createElement('div');
+    heart.className = 'float-heart';
+    heart.textContent = '❤';
+    heart.style.left = (e.clientX - 6) + 'px';
+    heart.style.top = (e.clientY - 6) + 'px';
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 1300);
+  }
+  function spawnSparkles(e) {
+    for (let i=0; i<4; i++) {
+      const s = document.createElement('div');
+      s.className = 'sparkle';
+      s.style.left = (e.clientX + (Math.random()*16-8)) + 'px';
+      s.style.top = (e.clientY + (Math.random()*10-5)) + 'px';
+      s.style.background = 'radial-gradient(circle, #fff 10%, #ffd1e0 50%, rgba(255,255,255,0) 70%)';
+      document.body.appendChild(s);
+      setTimeout(() => s.remove(), 1700);
+    }
+  }
+
+  // ===== Fade-in on view =====
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(en => en.isIntersecting && en.target.classList.add('visible'));
+  }, { threshold: .12 });
+  document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+
+  // ===== Age Countdown based on 2009-09-15 05:32 (local) =====
+  const birth = new Date(2009, 8, 15, 5, 32, 0); // months are 0-indexed
+  function updateAge() {
+    const now = new Date();
+    let years = now.getFullYear() - birth.getFullYear();
+    let months = now.getMonth() - birth.getMonth();
+    let days = now.getDate() - birth.getDate();
+    let hours = now.getHours() - birth.getHours();
+    let minutes = now.getMinutes() - birth.getMinutes();
+    let seconds = now.getSeconds() - birth.getSeconds();
+    
+    if (seconds < 0) { seconds += 60; minutes--; }
+    if (minutes < 0) { minutes += 60; hours--; }
+    if (hours < 0)   { hours += 24; days--;  }
+    if (days < 0)    {
+      const prevMonthLastDay = new Date(now.getFullYear(), now.getMonth(), 0).getDate();
+      days += prevMonthLastDay;
+      months--;
+    }
+    if (months < 0)  { months += 12; years--; }
+
+    document.getElementById('years').textContent = years;
+    document.getElementById('months').textContent = months;
+    document.getElementById('days').textContent = days;
+    document.getElementById('hours').textContent = hours;
+    document.getElementById('minutes').textContent = minutes;
+    document.getElementById('seconds').textContent = seconds;
+  }
+  updateAge();
+  setInterval(updateAge, 1000);
+
+  // ===== Slideshow =====
+  let currentSlide = 0;
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  function showSlide(i) {
+    slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
+  }
+  showSlide(currentSlide);
+  setInterval(() => {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+  }, 2800);
+
+  // ===== Love Meter / Heart Game =====
+  let love = 0; // 0..100
+  const meter = document.getElementById('meter');
+  const meterLabel = document.getElementById('meter-label');
+  const heartBank = document.getElementById('heart-bank');
+  for (let i=0; i<24; i++) {
+    const b = document.createElement('button');
+    b.className = 'heart-btn';
+    b.setAttribute('aria-label','Add love');
+    b.textContent = ['💞'][i%4];
+    b.addEventListener('click', () => { love = Math.min(100, love + 5 + (i%3)); updateMeter(); });
+    heartBank.appendChild(b);
+  }
+  function updateMeter() {
+    meter.style.width = love + '%';
+    meterLabel.innerHTML = `<strong>${love}%</strong> love power`;
+  }
+  setInterval(() => { love = Math.max(0, love - 1); updateMeter(); }, 1500);
+  updateMeter();
+
+  // ===== Facts =====
+  function dayOfWeek(d) {
+    return ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][d.getDay()];
+  }
+  function zodiac(d) {
+    const m = d.getMonth()+1, day = d.getDate();
+    if ((m==1&&day>=20)||(m==2&&day<=18)) return 'Aquarius';
+    if ((m==2&&day>=19)||(m==3&&day<=20)) return 'Pisces';
+    if ((m==3&&day>=21)||(m==4&&day<=19)) return 'Aries';
+    if ((m==4&&day>=20)||(m==5&&day<=20)) return 'Taurus';
+    if ((m==5&&day>=21)||(m==6&&day<=20)) return 'Gemini';
+    if ((m==6&&day>=21)||(m==7&&day<=22)) return 'Cancer';
+    if ((m==7&&day>=23)||(m==8&&day<=22)) return 'Leo';
+    if ((m==8&&day>=23)||(m==9&&day<=22)) return 'Virgo';
+    if ((m==9&&day>=23)||(m==10&&day<=22)) return 'Libra';
+    if ((m==10&&day>=23)||(m==11&&day<=21)) return 'Scorpio';
+    if ((m==11&&day>=22)||(m==12&&day<=21)) return 'Sagittarius';
+    return 'Capricorn';
+  }
+  function isoWeek(d) {
+    const dt = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+    const dayNum = (dt.getUTCDay() + 6) % 7;
+    dt.setUTCDate(dt.getUTCDate() - dayNum + 3);
+    const firstThursday = new Date(Date.UTC(dt.getUTCFullYear(),0,4));
+    const week = 1 + Math.round(((dt - firstThursday) / 86400000 - 3 + ((firstThursday.getUTCDay()+6)%7)) / 7);
+    return week;
+  }
+  function dayOfYear(d) {
+    const start = new Date(d.getFullYear(), 0, 0);
+    const diff = d - start;
+    return Math.floor(diff / 86400000);
+  }
+  function updateFacts() {
+    const now = new Date();
+    const daysLived = Math.floor((now - birth) / 86400000);
+    const hoursLived = Math.floor((now - birth) / 3600000);
+    document.getElementById('fact-dow').textContent = dayOfWeek(birth);
+    document.getElementById('fact-week').textContent = isoWeek(birth);
+    document.getElementById('fact-doy').textContent = dayOfYear(birth);
+    document.getElementById('fact-days').textContent = daysLived.toLocaleString();
+    document.getElementById('fact-hours').textContent = hoursLived.toLocaleString();
+  }
+  updateFacts();
+
+  // ===== Surprise Messages =====
+  const surprises = [
+  '💖  Aap hi ke Bina hoon. kyun Bechain. Aap hi kyun Meri Zarurat Hain. Aap hi ke Bina hoon. kyun Bechain.Aap hi kyun Meri Zarurat Hain. Waham itna Haseen Nahi Hota. Waqai Aap Khoobsurat Hain ',
+  '✨  kyu na. Ham sab chord kar ye Tarike Purane bas Dhundh le Baat karne ke Hazro bahane taki zahen me sabi ke. piyar ka Ek Dariyo Ho . aab ho agar kuch to Bas baat karne ka ek zariya ho. Taki Hamsafar ke chehre par aab koi nakab na  ho. aab ho agar kuch to mohabat  behisab ho .',
+  ];
+  function showSurprise() {
+    const box = document.getElementById('surprise-box');
+    const msg = surprises[Math.floor(Math.random()*surprises.length)];
+    box.textContent = msg;
+    box.classList.remove('visible');
+    requestAnimationFrame(()=> box.classList.add('visible'));
+  }
+
+  // ===== Poem Generator =====
+  const poem1 = [
+  'Ammu ki habit hai thoda zyada sochna,Har baat ko leke thoda sa moody ho jaana.Par main hoon na Chill pill banke,Aapke overthinking ko Mohabat  se rokne,',
+  // 'Soft as a secret, warm and bright,',
+  // 'Areeba, your laughter paints the air,',
+  // 'With gentle sparkles everywhere,'
+  ];
+  const poem2 = [
+  '😅😉,',
+  // 'Stars line up to cheer you through,',
+  // 'Every step a litgtle low,',
+  // 'Every heartbeat soft and slow,'
+  ];
+  const poem3 = [
+  'In sha allha ,',
+  // 'Where every tender moment grows,',
+  // 'And all your wishes twirl and play,',
+  // 'Happy, happy, birthday day.'
+  ];
+  function generatePoem() {
+    function pick(arr) { return arr[Math.floor(Math.random()*arr.length)]; }
+    const lines = [pick(poem1), pick(poem2), pick(poem3)];
+    const area = document.getElementById('poem-area');
+    area.innerHTML = `<em>${lines[0]}</em><br>${lines[1]}<br><strong>${lines[2]}</strong>`;
+    area.classList.remove('visible');
+    requestAnimationFrame(()=> area.classList.add('visible'));
+  }
+
+  // ===== Compliment Generator =====
+  const compliments = [
+  'Aap ho toh har thought cute lagta hai,Even overthinking bhi thode si sweet lagti hai.Bas ek request hai Ammu aap se chhoti si —Kabhi kabhi dil ki sun liya kariye , dimaag ka kya wo to hai ich nai 😅😅😅😅 😘🧠❤️.',
+  // 'Areeba, you are witty like cotton candy clouds.',
+  // 'Areeba, you are compassionate like a field of asters.',
+  // 'Areeba, you are graceful like a wish come true.',
+  // 'Areeba, you are majestic like a field of asters.',
+  // 'Areeba, you are magnetic like a pastel rainbow.',
+  // 'Areeba, you are generous like cotton candy clouds.',
+  // 'Areeba, you are witty like the first light of dawn.',
+  // 'Areeba, you are caring like a pastel rainbow.',
+  // 'Areeba, you are adventurous like moonlight on glass.',
+  // 'Areeba, you are graceful like a warm hug.',
+  // 'Areeba, you are marvelous like a sapphire sky.',
+  // 'Areeba, you are artistic like cotton candy clouds.',
+  // 'Areeba, you are soft like a crisp morning.',
+  // 'Areeba, you are marvelous like a gentle melody.',
+  // 'Areeba, you are bubbly like a sapphire sky.',
+  // 'Areeba, you are serene like moonlight on glass.',
+  // 'Areeba, you are glowing like a teddy bear.',
+  // 'Areeba, you are courageous like a field of asters.',
+  // 'Areeba, you are bubbly like a happy heartbeat.',
+  // 'Areeba, you are stellar like a sapphire sky.',
+  // 'Areeba, you are gentle like a warm hug.',
+  // 'Areeba, you are joyful like soft rose petals.',
+  // 'Areeba, you are elegant like soft rose petals.',
+  // 'Areeba, you are genuine like starlight on calm water.',
+  // 'Areeba, you are amazing like soft rose petals.',
+  // 'Areeba, you are brave like starlight on calm water.',
+  // 'Areeba, you are sweet like a wish come true.',
+  // 'Areeba, you are generous like a warm hug.',
+  // 'Areeba, you are fantastic like a pastel rainbow.',
+  // 'Areeba, you are dazzling like a teddy bear.',
+  // 'Areeba, you are brave like a gentle melody.',
+  // 'Areeba, you are playful like a crisp morning.',
+  // 'Areeba, you are adventurous like a pastel rainbow.',
+  // 'Areeba, you are playful like a cozy sunrise.',
+  // 'Areeba, you are clever like a teddy bear.',
+  // 'Areeba, you are ambitious like a happy heartbeat.',
+  // 'Areeba, you are genuine like a page of poetry.',
+  // 'Areeba, you are glowing like spring rain.',
+  // 'Areeba, you are wholesome like a teddy bear.',
+  // 'Areeba, you are supportive like soft rose petals.',
+  // 'Areeba, you are compassionate like freshly baked cookies.',
+  // 'Areeba, you are fantastic like a crisp morning.',
+  // 'Areeba, you are amazing like a cozy sunrise.',
+  // 'Areeba, you are witty like a warm hug.',
+  // 'Areeba, you are dazzling like starlight on calm water.',
+  // 'Areeba, you are dazzling like a blooming garden.',
+  // 'Areeba, you are loyal like spring rain.',
+  // 'Areeba, you are bright like soft rose petals.',
+  // 'Areeba, you are warm like a wish come true.',
+  // 'Areeba, you are serene like a cozy sunrise.',
+  // 'Areeba, you are radiant like a crisp morning.',
+  // 'Areeba, you are stellar like the first light of dawn.',
+  // 'Areeba, you are kind-hearted like a warm hug.',
+  // 'Areeba, you are gentle like a cozy sunrise.',
+  // 'Areeba, you are magnetic like a teddy bear.',
+  // 'Areeba, you are magnetic like a crisp morning.',
+  // 'Areeba, you are patient like a sapphire sky.',
+  // 'Areeba, you are creative like a friendly breeze.',
+  // 'Areeba, you are ambitious like cotton candy clouds.',
+  // 'Areeba, you are inspiring like moonlight on glass.',
+  // 'Areeba, you are vibrant like spring rain.',
+  // 'Areeba, you are sweet like a crisp morning.',
+  // 'Areeba, you are thoughtful like a gentle melody.',
+  // 'Areeba, you are marvelous like cotton candy clouds.',
+  // 'Areeba, you are genuine like spring rain.',
+  // 'Areeba, you are optimistic like freshly baked cookies.',
+  // 'Areeba, you are elegant like the first light of dawn.',
+  // 'Areeba, you are playful like moonlight on glass.',
+  // 'Areeba, you are strong like a warm hug.',
+  // 'Areeba, you are sweet like a field of asters.',
+  // 'Areeba, you are brilliant like a gentle melody.',
+  // 'Areeba, you are wholesome like a page of poetry.',
+  // 'Areeba, you are genuine like a pastel rainbow.',
+  // 'Areeba, you are supportive like cotton candy clouds.',
+  // 'Areeba, you are dazzling like a happy heartbeat.',
+  // 'Areeba, you are graceful like a crisp morning.',
+  // 'Areeba, you are sparkly like a sapphire sky.',
+  // 'Areeba, you are sincere like a sapphire sky.',
+  // 'Areeba, you are thoughtful like a page of poetry.',
+  // 'Areeba, you are compassionate like a cozy sunrise.',
+  // 'Areeba, you are fearless like freshly baked cookies.',
+  // 'Areeba, you are sweet like a blooming garden.',
+  // 'Areeba, you are dazzling like cotton candy clouds.',
+  // 'Areeba, you are glowing like a pastel rainbow.',
+  // 'Areeba, you are stellar like a page of poetry.',
+  // 'Areeba, you are caring like a gentle melody.',
+  // 'Areeba, you are strong like a gentle melody.',
+  // 'Areeba, you are thoughtful like a happy heartbeat.',
+  // 'Areeba, you are creative like a pastel rainbow.',
+  // 'Areeba, you are wholesome like a crisp morning.',
+  // 'Areeba, you are sincere like a cozy sunrise.',
+  // 'Areeba, you are gentle like a gentle melody.',
+  // 'Areeba, you are genuine like cotton candy clouds.',
+  // 'Areeba, you are generous like a pastel rainbow.',
+  // 'Areeba, you are courageous like a pastel rainbow.',
+  // 'Areeba, you are warm like a warm hug.',
+  // 'Areeba, you are clever like cotton candy clouds.',
+  // 'Areeba, you are wholesome like starlight on calm water.',
+  // 'Areeba, you are joyful like a friendly breeze.',
+  // 'Areeba, you are serene like a wish come true.',
+  // 'Areeba, you are magnetic like freshly baked cookies.',
+  // 'Areeba, you are graceful like a gentle melody.',
+  // 'Areeba, you are marvelous like a warm hug.',
+  // 'Areeba, you are elegant like a warm hug.',
+  // 'Areeba, you are ambitious like a sapphire sky.',
+  // 'Areeba, you are brilliant like the first light of dawn.',
+  // 'Areeba, you are sweet like soft rose petals.',
+  // 'Areeba, you are sincere like freshly baked cookies.',
+  // 'Areeba, you are fearless like a page of poetry.',
+  // 'Areeba, you are joyful like moonlight on glass.',
+  // 'Areeba, you are clever like moonlight on glass.',
+  // 'Areeba, you are adventurous like the first light of dawn.',
+  // 'Areeba, you are stellar like a pastel rainbow.',
+  // 'Areeba, you are amazing like a blooming garden.',
+  // 'Areeba, you are strong like a teddy bear.',
+  // 'Areeba, you are thoughtful like a cozy sunrise.',
+  // 'Areeba, you are creative like a warm hug.',
+  // 'Areeba, you are elegant like starlight on calm water.',
+  // 'Areeba, you are brave like a teddy bear.',
+  // 'Areeba, you are artistic like spring rain.',
+  // 'Areeba, you are charming like a cozy sunrise.',
+  // 'Areeba, you are sparkly like a blooming garden.',
+  // 'Areeba, you are loyal like a warm hug.',
+  // 'Areeba, you are radiant like a pastel rainbow.',
+  // 'Areeba, you are generous like a wish come true.',
+  // 'Areeba, you are fantastic like freshly baked cookies.',
+  // 'Areeba, you are joyful like a cozy sunrise.',
+  // 'Areeba, you are adventurous like a happy heartbeat.',
+  // 'Areeba, you are magnetic like a page of poetry.',
+  // 'Areeba, you are vibrant like a happy heartbeat.',
+  // 'Areeba, you are glowing like a cozy sunrise.',
+  // 'Areeba, you are optimistic like a wish come true.',
+  // 'Areeba, you are curious like a page of poetry.',
+  // 'Areeba, you are charming like a wish come true.',
+  // 'Areeba, you are amazing like a friendly breeze.',
+  // 'Areeba, you are caring like a crisp morning.',
+  // 'Areeba, you are charming like a happy heartbeat.',
+  // 'Areeba, you are gentle like moonlight on glass.',
+  // 'Areeba, you are sincere like spring rain.',
+  // 'Areeba, you are radiant like the first light of dawn.',
+  // 'Areeba, you are generous like moonlight on glass.',
+  // 'Areeba, you are bubbly like starlight on calm water.',
+  // 'Areeba, you are loyal like moonlight on glass.',
+  // 'Areeba, you are charming like starlight on calm water.',
+  // 'Areeba, you are warm like moonlight on glass.',
+  // 'Areeba, you are clever like a field of asters.',
+  // 'Areeba, you are thoughtful like a blooming garden.',
+  // 'Areeba, you are majestic like starlight on calm water.',
+  // 'Areeba, you are artistic like a friendly breeze.',
+  // 'Areeba, you are compassionate like a friendly breeze.',
+  // 'Areeba, you are patient like a blooming garden.',
+  // 'Areeba, you are epic like a sapphire sky.',
+  // 'Areeba, you are wholesome like a pastel rainbow.',
+  // 'Areeba, you are strong like the first light of dawn.',
+  // 'Areeba, you are clever like the first light of dawn.',
+  // 'Areeba, you are adventurous like a sapphire sky.',
+  // 'Areeba, you are brilliant like a friendly breeze.',
+  // 'Areeba, you are radiant like a happy heartbeat.',
+  // 'Areeba, you are courageous like a wish come true.',
+  // 'Areeba, you are thoughtful like starlight on calm water.',
+  // 'Areeba, you are epic like a blooming garden.',
+  // 'Areeba, you are sparkly like a cozy sunrise.',
+  // 'Areeba, you are patient like a teddy bear.',
+  // 'Areeba, you are fearless like cotton candy clouds.',
+  // 'Areeba, you are generous like a blooming garden.',
+  // 'Areeba, you are patient like moonlight on glass.',
+  // 'Areeba, you are fearless like a friendly breeze.',
+  // 'Areeba, you are glowing like a wish come true.',
+  // 'Areeba, you are wholesome like a warm hug.',
+  // 'Areeba, you are optimistic like a friendly breeze.',
+  // 'Areeba, you are magnetic like a friendly breeze.',
+  // 'Areeba, you are playful like a page of poetry.',
+  // 'Areeba, you are ambitious like soft rose petals.',
+  // 'Areeba, you are dazzling like spring rain.',
+  // 'Areeba, you are compassionate like a gentle melody.',
+  // 'Areeba, you are vibrant like the first light of dawn.',
+  // 'Areeba, you are elegant like a cozy sunrise.',
+  // 'Areeba, you are courageous like a cozy sunrise.',
+  // 'Areeba, you are fearless like a cozy sunrise.',
+  // 'Areeba, you are sweet like a teddy bear.',
+  // 'Areeba, you are creative like a teddy bear.',
+  // 'Areeba, you are amazing like a happy heartbeat.',
+  // 'Areeba, you are generous like a teddy bear.',
+  // 'Areeba, you are stellar like cotton candy clouds.',
+  // 'Areeba, you are witty like freshly baked cookies.',
+  // 'Areeba, you are compassionate like spring rain.',
+  // 'Areeba, you are generous like a friendly breeze.',
+  // 'Areeba, you are sincere like a happy heartbeat.',
+  // 'Areeba, you are cheerful like a page of poetry.',
+  // 'Areeba, you are generous like the first light of dawn.',
+  // 'Areeba, you are genuine like a gentle melody.',
+  // 'Areeba, you are creative like a page of poetry.',
+  // 'Areeba, you are bubbly like a field of asters.',
+  // 'Areeba, you are compassionate like soft rose petals.',
+  // 'Areeba, you are joyful like a blooming garden.',
+  // 'Areeba, you are dazzling like soft rose petals.',
+  // 'Areeba, you are majestic like moonlight on glass.',
+  // 'Areeba, you are glowing like a crisp morning.',
+  // 'Areeba, you are amazing like a field of asters.',
+  // 'Areeba, you are sparkly like a field of asters.',
+  // 'Areeba, you are glowing like a warm hug.',
+  // 'Areeba, you are serene like freshly baked cookies.',
+  // 'Areeba, you are joyful like spring rain.',
+  // 'Areeba, you are magnetic like moonlight on glass.',
+  // 'Areeba, you are supportive like a blooming garden.',
+  // 'Areeba, you are wholesome like a blooming garden.',
+  // 'Areeba, you are fearless like a sapphire sky.',
+  // 'Areeba, you are brave like a cozy sunrise.',
+  // 'Areeba, you are genuine like a teddy bear.',
+  // 'Areeba, you are loyal like a blooming garden.',
+  // 'Areeba, you are courageous like spring rain.',
+  // 'Areeba, you are epic like a friendly breeze.',
+  // 'Areeba, you are clever like a crisp morning.',
+  // 'Areeba, you are optimistic like moonlight on glass.',
+  // 'Areeba, you are radiant like starlight on calm water.',
+  // 'Areeba, you are genuine like a cozy sunrise.',
+  // 'Areeba, you are brave like a crisp morning.',
+  // 'Areeba, you are vibrant like a field of asters.',
+  // 'Areeba, you are adventurous like freshly baked cookies.',
+  // 'Areeba, you are sincere like a warm hug.',
+  // 'Areeba, you are playful like a field of asters.',
+  // 'Areeba, you are sparkly like a warm hug.',
+  // 'Areeba, you are sparkly like the first light of dawn.',
+  // 'Areeba, you are gentle like a blooming garden.',
+  // 'Areeba, you are glowing like soft rose petals.',
+  // 'Areeba, you are brave like freshly baked cookies.',
+  // 'Areeba, you are warm like cotton candy clouds.',
+  // 'Areeba, you are stellar like a happy heartbeat.',
+  // 'Areeba, you are kind-hearted like a happy heartbeat.',
+  // 'Areeba, you are charming like freshly baked cookies.',
+  // 'Areeba, you are genuine like a warm hug.',
+  // 'Areeba, you are artistic like starlight on calm water.',
+  // 'Areeba, you are dazzling like a pastel rainbow.',
+  // 'Areeba, you are courageous like a warm hug.',
+  // 'Areeba, you are serene like spring rain.',
+  // 'Areeba, you are amazing like a pastel rainbow.',
+  // 'Areeba, you are brave like the first light of dawn.',
+  // 'Areeba, you are adventurous like a warm hug.',
+  // 'Areeba, you are brilliant like a blooming garden.',
+  // 'Areeba, you are sparkly like a friendly breeze.',
+  // 'Areeba, you are joyful like a warm hug.',
+  // 'Areeba, you are warm like soft rose petals.',
+  // 'Areeba, you are marvelous like a pastel rainbow.',
+  // 'Areeba, you are graceful like the first light of dawn.',
+  // 'Areeba, you are amazing like starlight on calm water.',
+  // 'Areeba, you are adventurous like a wish come true.',
+  // 'Areeba, you are epic like a field of asters.',
+  // 'Areeba, you are fantastic like a page of poetry.',
+  // 'Areeba, you are inspiring like a cozy sunrise.',
+  // 'Areeba, you are witty like moonlight on glass.',
+  // 'Areeba, you are strong like a crisp morning.',
+  // 'Areeba, you are optimistic like a page of poetry.',
+  // 'Areeba, you are elegant like a sapphire sky.',
+  // 'Areeba, you are cheerful like moonlight on glass.',
+  // 'Areeba, you are ambitious like a page of poetry.',
+  // 'Areeba, you are fearless like a field of asters.',
+  // 'Areeba, you are sweet like a page of poetry.',
+  // 'Areeba, you are genuine like a field of asters.',
+  // 'Areeba, you are creative like a blooming garden.',
+  // 'Areeba, you are glowing like a blooming garden.',
+  // 'Areeba, you are creative like cotton candy clouds.',
+  // 'Areeba, you are loyal like a crisp morning.',
+  // 'Areeba, you are bubbly like a page of poetry.',
+  // 'Areeba, you are sparkly like a pastel rainbow.',
+  // 'Areeba, you are ambitious like a field of asters.',
+  // 'Areeba, you are elegant like a teddy bear.',
+  // 'Areeba, you are charming like a blooming garden.',
+  // 'Areeba, you are strong like soft rose petals.',
+  // 'Areeba, you are curious like spring rain.',
+  // 'Areeba, you are supportive like a happy heartbeat.',
+  // 'Areeba, you are caring like a wish come true.',
+  // 'Areeba, you are playful like a pastel rainbow.',
+  // 'Areeba, you are optimistic like the first light of dawn.',
+  // 'Areeba, you are graceful like soft rose petals.',
+  // 'Areeba, you are bright like a crisp morning.',
+  // 'Areeba, you are charming like a warm hug.',
+  // 'Areeba, you are ambitious like a warm hug.',
+  // 'Areeba, you are patient like a happy heartbeat.',
+  // 'Areeba, you are joyful like a crisp morning.',
+  // 'Areeba, you are soft like a pastel rainbow.',
+  // 'Areeba, you are amazing like a page of poetry.',
+  // 'Areeba, you are courageous like a teddy bear.',
+  // 'Areeba, you are ambitious like a gentle melody.',
+  // 'Areeba, you are epic like a wish come true.',
+  // 'Areeba, you are caring like a page of poetry.',
+  // 'Areeba, you are courageous like soft rose petals.',
+  // 'Areeba, you are kind-hearted like a friendly breeze.',
+  // 'Areeba, you are wholesome like a sapphire sky.',
+  // 'Areeba, you are bright like cotton candy clouds.',
+  // 'Areeba, you are majestic like a happy heartbeat.',
+  // 'Areeba, you are patient like a friendly breeze.',
+  // 'Areeba, you are caring like a blooming garden.',
+  // 'Areeba, you are epic like a happy heartbeat.',
+  // 'Areeba, you are fantastic like starlight on calm water.',
+  // 'Areeba, you are gentle like a sapphire sky.',
+  // 'Areeba, you are clever like a page of poetry.',
+  // 'Areeba, you are optimistic like a warm hug.',
+  // 'Areeba, you are strong like moonlight on glass.',
+  // 'Areeba, you are brilliant like a page of poetry.',
+  // 'Areeba, you are sweet like the first light of dawn.',
+  // 'Areeba, you are epic like the first light of dawn.',
+  // 'Areeba, you are supportive like a field of asters.',
+  // 'Areeba, you are ambitious like a pastel rainbow.',
+  // 'Areeba, you are loyal like a field of asters.',
+  // 'Areeba, you are brave like a friendly breeze.',
+  // 'Areeba, you are inspiring like a happy heartbeat.',
+  // 'Areeba, you are stellar like a blooming garden.',
+  // 'Areeba, you are compassionate like a page of poetry.',
+  // 'Areeba, you are sweet like a sapphire sky.',
+  // 'Areeba, you are serene like soft rose petals.',
+  // 'Areeba, you are epic like soft rose petals.',
+  // 'Areeba, you are joyful like a gentle melody.',
+  // 'Areeba, you are graceful like a page of poetry.',
+  // 'Areeba, you are brave like a wish come true.',
+  // 'Areeba, you are caring like a friendly breeze.',
+  // 'Areeba, you are playful like freshly baked cookies.',
+  // 'Areeba, you are amazing like freshly baked cookies.',
+  // 'Areeba, you are cheerful like a warm hug.',
+  // 'Areeba, you are majestic like a crisp morning.',
+  // 'Areeba, you are optimistic like soft rose petals.',
+  // 'Areeba, you are elegant like a wish come true.',
+  // 'Areeba, you are patient like a cozy sunrise.',
+  // 'Areeba, you are vibrant like a page of poetry.',
+  // 'Areeba, you are bubbly like a wish come true.',
+  // 'Areeba, you are brilliant like freshly baked cookies.',
+  // 'Areeba, you are creative like spring rain.',
+  // 'Areeba, you are curious like soft rose petals.',
+  // 'Areeba, you are curious like moonlight on glass.',
+  // 'Areeba, you are caring like a field of asters.',
+  // 'Areeba, you are brave like soft rose petals.',
+  // 'Areeba, you are wholesome like spring rain.',
+  // 'Areeba, you are stellar like a cozy sunrise.',
+  // 'Areeba, you are warm like a crisp morning.',
+  // 'Areeba, you are adventurous like a gentle melody.',
+  // 'Areeba, you are magnetic like a warm hug.',
+  // 'Areeba, you are serene like a pastel rainbow.',
+  // 'Areeba, you are generous like a crisp morning.',
+  // 'Areeba, you are fantastic like moonlight on glass.',
+  // 'Areeba, you are bright like a blooming garden.',
+  // 'Areeba, you are supportive like a sapphire sky.',
+  // 'Areeba, you are generous like a page of poetry.',
+  // 'Areeba, you are wholesome like a wish come true.',
+  // 'Areeba, you are dazzling like a cozy sunrise.',
+  // 'Areeba, you are soft like a happy heartbeat.',
+  // 'Areeba, you are clever like soft rose petals.',
+  // 'Areeba, you are patient like a warm hug.',
+  // 'Areeba, you are creative like soft rose petals.',
+  // 'Areeba, you are fearless like a crisp morning.',
+  // 'Areeba, you are fearless like a warm hug.',
+  // 'Areeba, you are elegant like freshly baked cookies.',
+  // 'Areeba, you are witty like a page of poetry.',
+  // 'Areeba, you are supportive like a teddy bear.',
+  // 'Areeba, you are epic like a teddy bear.',
+  // 'Areeba, you are sparkly like a wish come true.',
+  // 'Areeba, you are curious like a blooming garden.',
+  // 'Areeba, you are witty like a sapphire sky.',
+  // 'Areeba, you are clever like a blooming garden.',
+  // 'Areeba, you are cheerful like starlight on calm water.',
+  // 'Areeba, you are bright like spring rain.',
+  // 'Areeba, you are sincere like a friendly breeze.',
+  // 'Areeba, you are sweet like moonlight on glass.',
+  // 'Areeba, you are inspiring like a pastel rainbow.',
+  // 'Areeba, you are brilliant like cotton candy clouds.',
+  // 'Areeba, you are marvelous like a page of poetry.',
+  // 'Areeba, you are glowing like a field of asters.',
+  // 'Areeba, you are joyful like a wish come true.',
+  // 'Areeba, you are strong like a page of poetry.',
+  // 'Areeba, you are brilliant like a teddy bear.',
+  // 'Areeba, you are serene like a gentle melody.',
+  // 'Areeba, you are fantastic like cotton candy clouds.',
+  // 'Areeba, you are ambitious like starlight on calm water.',
+  // 'Areeba, you are inspiring like cotton candy clouds.',
+  // 'Areeba, you are sweet like starlight on calm water.',
+  // 'Areeba, you are cheerful like a cozy sunrise.',
+  // 'Areeba, you are serene like cotton candy clouds.',
+  // 'Areeba, you are supportive like a wish come true.',
+  // 'Areeba, you are thoughtful like a pastel rainbow.',
+  // 'Areeba, you are creative like a crisp morning.',
+  // 'Areeba, you are brave like a happy heartbeat.',
+  // 'Areeba, you are dazzling like a gentle melody.',
+  // 'Areeba, you are graceful like a blooming garden.',
+  // 'Areeba, you are optimistic like a crisp morning.',
+  // 'Areeba, you are supportive like a page of poetry.',
+  // 'Areeba, you are sweet like spring rain.',
+  // 'Areeba, you are magnetic like a wish come true.',
+  // 'Areeba, you are supportive like moonlight on glass.',
+  // 'Areeba, you are witty like spring rain.',
+  // 'Areeba, you are magnetic like a blooming garden.',
+  // 'Areeba, you are bubbly like a pastel rainbow.',
+  // 'Areeba, you are bright like a gentle melody.',
+  // 'Areeba, you are serene like a warm hug.',
+  // 'Areeba, you are majestic like freshly baked cookies.',
+  // 'Areeba, you are vibrant like freshly baked cookies.',
+  // 'Areeba, you are ambitious like a wish come true.',
+  // 'Areeba, you are amazing like a teddy bear.',
+  // 'Areeba, you are glowing like a page of poetry.',
+  // 'Areeba, you are brave like a blooming garden.',
+  // 'Areeba, you are sincere like soft rose petals.',
+  // 'Areeba, you are graceful like a field of asters.'
+  ];
+  function giveCompliment() {
+    const c = compliments[Math.floor(Math.random()*compliments.length)];
+    const box = document.getElementById('compliment-box');
+    box.textContent = c;
+    box.classList.remove('visible');
+    requestAnimationFrame(()=> box.classList.add('visible'));
+  }
+
+  // ===== Favorites flip =====
+  function flipFavorite(el) { el.classList.toggle('flip'); }
+
+  // ===== Easter Eggs =====
+  const eggMessages = [
+    "You found a pink secret! 🌸",
+    "Hidden hug unlocked 🤗",
+    "A tiny cheer just for you ✨",
+    "You’re loved — pass it on 💌",
+    "Soft courage bonus acquired 🧚",
+    "Gentle sparkle achieved 🌟",
+    "Keep exploring, birthday star 💖",
+    "A cupcake of kindness for you 🧁",
+    "A rose for your day 🌹",
+    "You’re pure magic ✨",
+    "Dancing clouds approve ☁️",
+    "Pink confetti? Nope — pink calm. 🎀",
+    "The world smiles with you 😄",
+    "Secret melody sings 🎶",
+    "Warm cocoa vibes ☕",
+    "Page thinks you’re epic 💫",
+    "Sunbeams follow you ☀️",
+    "Aster petals applaud 🌼",
+    "Dreams waving hello 🌙",
+    "Soft power on 🔆",
+    "You’re doing amazing 💯",
+    "High-five, star-catcher 🖐️",
+    "A tiny wish granted ⭐",
+    "Smile checkpoint passed ✅",
+    "Happy heart detected 💓",
+    "Glitter-free glitter 🫧",
+    "Calm sparkle mode 🪄",
+    "Your vibe: immaculate 🌈",
+    "Cozy corner reserved 🛋️",
+    "Bonus love unlocked 💟"
+  ];
+  function revealEgg(i) {
+    const msg = eggMessages[(i-1) % eggMessages.length];
+    alert(msg);
+  }
+
+  // ===== Game: Catch the Star =====
+  let score = 0;
+  const star = document.getElementById('star');
+  const gameArea = document.getElementById('game-area');
+  function moveStar() {
+    const rect = gameArea.getBoundingClientRect();
+    const x = Math.random() * (rect.width - 30);
+    const y = Math.random() * (rect.height - 30);
+    star.style.left = x + 'px';
+    star.style.top = y + 'px';
+  }
+  star.addEventListener('click', () => { score++; document.getElementById('score').textContent = score; moveStar(); spawnSparkles({clientX: star.getBoundingClientRect().left, clientY: star.getBoundingClientRect().top}); });
+  setInterval(moveStar, 1500);
+  moveStar();
+
+  // ===== Panel tiny secrets =====
+  function revealPanelMessage(i) {
+    const el = document.getElementById('panel-msg-'+i);
+    const msgs = [
+      "You are treasured more than you know.",
+      "Aapki muskurahat roshni si chha jaati hai. Na jaane kya baat hai aap mein,Har mulaqat ek yaad ban jaati hai",
+      "Aap jaise log milte hain naseeb se,Har pal roshan ho jaata hai aapki tasveer se.Na ho paas, phir bhi kareeb lagte Hoo,Aap dil ke sabse haseen hisse Hoo..",
+      "Aap ho toh har din ek khubsurat kahani lagti hai,Zindagi bhi kuch zyada hi meherbaan si lagti hai.",
+      "Aap ho toh har pal khubsurat sa lagta hai, Warna toh sab kuch bas routine sa lagta hai.",
+      "Aap mil jaayein toh coffee bhi extra sweet lagti hai,Aur Monday bhi thoda Friday-feel deti hai..",
+      "Aapki baatein lagti hain Marvel  series jaisi,Ek suno lu  toh agla episode chahiye turant hi. 🍿💬.",
+      "Aapke thoughts jitne gehre,Mera pyaar utna hi gehra. 💫.",
+      "Aapke thoughts chaand jaise hain,Kabhi dim, kabhi bright, par hamesha khoobsurat. 🌙💫.",
+      "Aapka overthinking bhi cute lagta hai,Bas thoda kam karo, warna heart steal kar lunga! 😘💥."
+      
+      
+    ];
+    el.textContent = msgs[i % msgs.length];
+  }
+
+  // ===== Accessibility helpers =====
+  document.addEventListener('keyup', (e) => {
+    // Type 'LOVE' to show a sweet alert
+    window._typed = (window._typed || "") + e.key.toUpperCase();
+    if (window._typed.endsWith("LOVE")) {
+      alert("LOVE unlocked: You are adored, Areeba! 💖");
+      window._typed = "";
+    }
+  });
+</script>
+
+
+<!-- Arcade & Extra Features from v3 -->
+<section id="arcade" class="section bg-pink-8">
+  <div class="container">
+    <h2 class="glow">🎮 Arcade Zone</h2>
+    <div class="tabs">
+      <button class="btn tab" data-tab="ttt">Tic-Tac-Toe</button>
+      <button class="btn tab" data-tab="scramble">Word Scramble</button>
+      <button class="btn tab" data-tab="memory">Memory</button>
+    </div>
+    <div id="panel-ttt" class="panel active center">
+      <div class="center"><span class="chip">You are X</span><span id="tttMsg" class="chip">Your move</span></div>
+      <div id="tttBoard"></div>
+      <div class="center" style="margin-top:8px"><button class="btn" id="tttReset">Restart</button></div>
+    </div>
+    <div id="panel-scramble" class="panel center">
+      <div id="scrambleWord" class="word"></div>
+      <div class="row" style="justify-content:center;margin-top:8px">
+        <input id="scrambleInput" placeholder="Type word"/>
+        <button class="btn" id="scrambleCheck">Check</button>
+        <button class="btn" id="scrambleNext">Next</button>
+      </div>
+      <div id="scrambleMsg" class="chip" style="margin-top:6px"></div>
+    </div>
+    <div id="panel-memory" class="panel center">
+      <div id="memoryGrid" class="memory-grid"></div>
+      <div class="center" style="margin-top:8px"><button class="btn" id="resetMemory">Restart</button><span class="chip" id="memoryMsg" style="margin-left:8px"></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Add fireworks, confetti, music -->
+<canvas id="fx"></canvas>
+<audio id="music" src="music1.mp3" loop preload="auto"></audio>
+<div class="controls" style="text-align:center; margin:20px;">
+  <button class="btn" id="musicToggle">Music</button>
+  <button class="btn" id="fireBtn">Fireworks</button>
+  <button class="btn" id="confettiBtn">Confetti</button>
+</div>
+
+
+<canvas id="fx"></canvas>
+<header>
+  <div class="controls">
+    <button class="btn" id="fireBtn">Fireworks</button>
+    <button class="btn" id="confettiBtn">Confetti</button>
+    <button class="btn" id="speak">Read Wish</button>
+    <button class="btn" id="giftBtn">Open Surprise</button>
+  </div>
+</header>
+<main class="grid">
+  <section class="card">
+    <h2>Countdown & Age</h2>
+    <div class="countdown" id="countdown"></div>
+    <div class="agegrid" id="agegrid"></div>
+  </section>
+
+  
+    <!-- TTT -->
+
+  <section class="card">
+    <h2>Wishes Wall</h2>
+    <div class="row"><input id="wishText" placeholder="Write a wish"/><button class="btn" id="addWish">Add</button></div>
+    <div id="wishList" style="margin-top:10px;display:grid;gap:8px"></div>
+  </section>
+</main>
+<dialog id="giftModal"><div class="card" style="min-width:min(92vw,520px)"><h2 class="center">Surprise</h2><p class="center">Happy birthday Shahzadi. dear areeba . Allah aapki har dua khoobl kare ameen.
+Ammu jis din se aapse mohabbat hue uus din se zindgi ka asli matlab samjh me aaya .
+Aapse mohabbat ek saal do saal se nai hai jab se pehle baar sans liya jab se in sha Allah aakri sans tak rahinge 
+In sha Allah wait will be worth it ammu ji</p><div class="center"><button class="btn" onclick="giftModal.close()">Close</button></div></div></dialog>
+<audio id="music" src="music1.mp3" loop preload="auto"></audio>
+<div class="toast" id="toast"></div>
+<footer id="thanks" class="section bg-pink-13">
+  <div class="container">
+    <h2 class="glow">Thank You for Being You, Areeba 💖</h2>
+    <p>May your year be sprinkled with peace, pink skies, and gentle victories. You are truly special.</p>
+    <div class="end-hearts">
+      <span class="end-heart" onclick="spawnHeart(event)">💗</span>
+      <span class="end-heart" onclick="spawnHeart(event)">💞</span>
+      <span class="end-heart" onclick="spawnHeart(event)">💖</span>
+      <span class="end-heart" onclick="spawnHeart(event)">💕</span>
+    </div>
+  </div>
+</footer>
+<footer>Made for Areeba with love • 15-09-2009</footer>
+<script>
+const DOB="2009-09-15";
+/* FX */
+const fx=document.getElementById('fx'),ctx=fx.getContext('2d');let W=0,H=0,DPR=Math.min(2,devicePixelRatio||1);
+function size(){W=fx.width=innerWidth*DPR;H=fx.height=innerHeight*DPR;fx.style.width=innerWidth+'px';fx.style.height=innerHeight+'px';}addEventListener('resize',size);size();
+const bursts=[],pieces=[];function confetti(cx=W/2,cy=H/3,n=100){for(let i=0;i<n;i++)pieces.push({x:cx,y:cy,vx:(Math.random()-0.5)*5,vy:(Math.random()-1)*6-5,g:.12,a:1,r:Math.random()*6+3})}
+addEventListener('click',e=>{const x=(e.clientX||innerWidth/2)*DPR,y=(e.clientY||innerHeight/2)*DPR;bursts.push({x,y,t:0});confetti(x,y,120)});
+function draw(){ctx.clearRect(0,0,W,H);for(let i=bursts.length-1;i>=0;i--){const b=bursts[i];b.t++;const R=Math.min(140*DPR,b.t*3);for(let j=0;j<18;j++){const ang=j*(Math.PI*2/18);ctx.beginPath();ctx.arc(b.x+Math.cos(ang)*R,b.y+Math.sin(ang)*R,2*DPR,0,Math.PI*2);ctx.fillStyle=['#ff76b6','#ffa3ce','#ffc1dc','#ffd6e7'][j%4];ctx.fill()}if(R>=140*DPR)bursts.splice(i,1)}for(let i=pieces.length-1;i>=0;i--){const p=pieces[i];p.vy+=p.g;p.x+=p.vx;p.y+=p.vy;p.a-=.01;ctx.globalAlpha=Math.max(0,p.a);ctx.fillStyle=['#ff76b6','#ffa3ce','#ffc1dc','#ffd6e7'][i%4];ctx.fillRect(p.x,p.y,p.r,p.r);if(p.a<=0||p.y>H+20)pieces.splice(i,1)}ctx.globalAlpha=1;requestAnimationFrame(draw)}draw();
+/* UI */
+const toast=document.getElementById('toast');function tip(t){toast.textContent=t;toast.style.display='block';clearTimeout(tip.t);tip.t=setTimeout(()=>toast.style.display='none',1600)}
+const giftModal=document.getElementById('giftModal');document.getElementById('giftBtn').onclick=()=>giftModal.showModal();document.getElementById('confettiBtn').onclick=()=>confetti();document.getElementById('fireBtn').onclick=()=>{bursts.push({x:W/2,y:H/3,t:0});confetti(W/2,H/3,140)};
+const music=document.getElementById('music');document.getElementById('musicToggle').onclick=async()=>{try{if(music.paused){await music.play();tip('Music ON')}else{music.pause();tip('Music OFF')}}catch(e){tip('Tap the page once to enable audio')}};
+document.getElementById('speak').onclick=()=>{const t=new SpeechSynthesisUtterance('Areeba You are the most beautiful feeling in my life. Every moment with you brings a new kind of happiness. I fall more in love with you every single day — more than words could ever express. With you, everything feels complete; without you, everything feels empty. You are my world, the reason behind every smile.. in sha allha wait will be worth it ');t.lang='en-US';t.rate=1.02;t.pitch=1.05;speechSynthesis.speak(t)};
+/* Countdown & Age */
+function nextBirthday(){const [y,m,d]=DOB.split('-').map(Number);const now=new Date();let n=new Date(now.getFullYear(),m-1,d);if(n<now)n.setFullYear(now.getFullYear()+1);return n}
+function ageStats(){const [y,m,d]=DOB.split('-').map(Number);const birth=new Date(y,m-1,d);const now=new Date();let years=now.getFullYear()-y;const had=(now.getMonth()>m-1)||(now.getMonth()==m-1&&now.getDate()>=d);if(!had)years--;const ms=now-birth;const days=Math.floor(ms/86400000);const hours=Math.floor(ms/3600000);const minutes=Math.floor(ms/60000);const seconds=Math.floor(ms/1000);document.getElementById('agegrid').innerHTML=`<div class="box"><b>${years}</b><div>Years old</div></div><div class="box"><b>${days.toLocaleString()}</b><div>Days</div></div><div class="box"><b>${hours.toLocaleString()}</b><div>Hours</div></div><div class="box"><b>${minutes.toLocaleString()}</b><div>Minutes</div></div><div class="box"><b>${seconds.toLocaleString()}</b><div>Seconds</div></div>`}
+function tick(){const t=+nextBirthday()-Date.now();const d=Math.floor(t/86400000),h=Math.floor((t%86400000)/3600000),m=Math.floor((t%3600000)/60000),s=Math.floor((t%60000)/1000);document.getElementById('countdown').innerHTML=[`<div class="time"><b>${d}</b>Days</div>`,`<div class="time"><b>${h}</b>Hours</div>`,`<div class="time"><b>${m}</b>Minutes</div>`,`<div class="time"><b>${s}</b>Seconds</div>`].join('');ageStats();setTimeout(tick,1000)}tick();
+/* Tabs */
+const tabs=document.querySelectorAll('.tab');tabs.forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));document.getElementById('panel-'+b.dataset.tab).classList.add('active')}));
+/* Tic Tac Toe - robust */
+const boardDiv=document.getElementById('tttBoard');const tttMsg=document.getElementById('tttMsg');let board,player,ai,gameOver=false,aiThinking=false;
+const wins=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+function tttReset(){board=Array(9).fill('');player='❤';ai='💕';gameOver=false;aiThinking=false;boardDiv.innerHTML='';for(let i=0;i<9;i++){const c=document.createElement('div');c.className='tttCell';c.dataset.i=i;c.textContent='';c.onclick=()=>playerMove(i);boardDiv.appendChild(c)}tttMsg.textContent='Your move';}
+function getWinner(b){for(const [a,b2,c] of wins){if(b[a]&&b[a]===b[b2]&&b[a]===b[c])return b[a];}return b.every(Boolean)?'T':null}
+function emptyIndices(b){const arr=[];for(let i=0;i<9;i++)if(!b[i])arr.push(i);return arr}
+function tryLine(b,mark){for(const [a,b2,c] of wins){const line=[b[a],b[b2],b[c]];if(line.filter(x=>x===mark).length===2&&line.includes('')){const idx=[a,b2,c][line.indexOf('')];return idx}}return null}
+function aiMove(){if(gameOver||aiThinking)return;aiThinking=true;setTimeout(()=>{let move=tryLine(board,ai);if(move==null)move=tryLine(board,player);if(move==null&&board[4]=='')move=4;if(move==null){const corners=[0,2,6,8].filter(i=>board[i]=='');if(corners.length)move=corners[Math.floor(Math.random()*corners.length)];}
+if(move==null){const empties=emptyIndices(board);move=empties[Math.floor(Math.random()*empties.length)]}place(move,ai);aiThinking=false;},300)}
+function place(i,mark){if(gameOver||board[i])return;board[i]=mark;boardDiv.children[i].textContent=mark;const w=getWinner(board);if(w){gameOver=true;tttMsg.textContent=(w==='T'?'Tie':'Winner: '+w);if(w!=='T')confetti();return}if(mark===player){aiMove()}}
+function playerMove(i){if(aiThinking||gameOver)return;place(i,player)}
+document.getElementById('tttReset').onclick=tttReset;tttReset();
+/* Scramble */
+const words =['AMMU JI','DONUT','RANI','SABA','HEART','MADAM JI','JAAN','AREEBA','AREEBU','BIRTHDAY','MINE'];let current='';
+function shuffle(s){return s.split('').sort(()=>Math.random()-0.5).join('')}
+function nextWord(){current=words[Math.floor(Math.random()*words.length)];document.getElementById('scrambleWord').textContent=shuffle(current);document.getElementById('scrambleInput').value='';document.getElementById('scrambleMsg').textContent=''}
+document.getElementById('scrambleCheck').onclick=()=>{const val=(document.getElementById('scrambleInput').value||'').trim().toUpperCase();document.getElementById('scrambleMsg').textContent=(val===current)?'Correct!':'Try again';if(val===current)confetti()};document.getElementById('scrambleNext').onclick=nextWord;nextWord();
+/* Memory — 4s reveal */
+const memoryGrid=document.getElementById('memoryGrid');const memoryMsg=document.getElementById('memoryMsg');
+const memIcons=['💖','🎀','🍰','🌸','🧁','🎉','🌷','⭐','🫶','🎈','🍓','🩷'];
+let deck=[],first=null,lock=false,found=0,allowClicks=false,revealTimer=null;
+function makeDeck(){deck=[...memIcons,...memIcons].sort(()=>Math.random()-0.5)}
+function renderMemory(){memoryGrid.innerHTML='';deck.forEach((v,i)=>{const c=document.createElement('div');c.className='memory-card';c.dataset.i=i;c.dataset.v=v;c.textContent='?';c.onclick=()=>{if(!allowClicks||lock||c.classList.contains('open'))return;c.classList.add('open');c.textContent=v;if(!first)first=c;else{lock=true;if(first.dataset.v===c.dataset.v){found++;setTimeout(()=>{first.style.opacity=c.style.opacity=.6;lock=false;first=null;if(found===memIcons.length){memoryMsg.textContent='All matched!';confetti()}},220)}else{setTimeout(()=>{first.classList.remove('open');c.classList.remove('open');first.textContent=c.textContent='?';lock=false;first=null},480)}}};memoryGrid.appendChild(c)})}
+function preReveal(){allowClicks=false;document.querySelectorAll('.memory-card').forEach(c=>{c.classList.add('open');c.textContent=c.dataset.v});memoryMsg.textContent='Memorize...';clearTimeout(revealTimer);revealTimer=setTimeout(()=>{document.querySelectorAll('.memory-card').forEach(c=>{c.classList.remove('open');c.textContent='?'});allowClicks=true;memoryMsg.textContent='Go!';},4000)}
+function startMemory(){found=0;first=null;lock=false;allowClicks=false;makeDeck();renderMemory();setTimeout(preReveal,50)}
+document.getElementById('resetMemory').onclick=startMemory;startMemory();
+/* Wishes, poem, timeline */
+document.getElementById('addWish').onclick=()=>{const t=(document.getElementById('wishText').value||'').trim();if(!t)return;const d=document.createElement('div');d.textContent='💌 '+t;d.className='box';document.getElementById('wishList').prepend(d);document.getElementById('wishText').value='';confetti()};
+const poem=document.getElementById('poem');const poemLines=[
+"On a pink September morning, a light said hello",
+"Every laugh you share paints the sky in glow",
+"Fifteenth of nine, two-thousand and nine",
+"A star named Areeba began to shine",
+"Petals of kindness follow where you go",
+"Your courage is soft, your dreams always grow",
+"In every heartbeat, there’s music and grace",
+"A gentle sunrise resting on your face",
+"May every birthday bloom sweeter than spring",
+"And every wish you whisper take wing"
+];poemLines.forEach(l=>{const d=document.createElement('div');d.className='chip';d.textContent=l;poem.appendChild(d)});
+const tl=document.getElementById('timeline');const years=[
+{y:2009,t:'Welcome to the world'},
+{y:2012,t:'First tiny victories'},
+{y:2015,t:'School adventures begin'},
+{y:2018,t:'New friends, new hobbies'},
+{y:2021,t:'Stronger, kinder, brighter'},
+{y:2023,t:'Dreams getting bigger'},
+{y:2024,t:'Smiles that light rooms'},
+{y:2025,t:'This special birthday — celebrated in pink!'}
+];years.forEach(it=>{const d=document.createElement('div');d.className='box';d.innerHTML='<b>'+it.y+'</b><div>'+it.t+'</div>';tl.appendChild(d)});
+</script>
+
+
+<script>
+
+  // ===== Floating Heart & Sparkle Effects (gentle) =====
+  let lastHeart = 0;
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('.btn, .heart-btn, .end-heart, .fav-card, #star')) return; // not on UI buttons
+    const now = performance.now();
+    if (now - lastHeart < 120) return; // gentle, not chaotic
+    lastHeart = now;
+    spawnHeart(e);
+    spawnSparkles(e);
+  });
+  function spawnHeart(e) {
+    const heart = document.createElement('div');
+    heart.className = 'float-heart';
+    heart.textContent = '❤';
+    heart.style.left = (e.clientX - 6) + 'px';
+    heart.style.top = (e.clientY - 6) + 'px';
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 1300);
+  }
+  function spawnSparkles(e) {
+    for (let i=0; i<4; i++) {
+      const s = document.createElement('div');
+      s.className = 'sparkle';
+      s.style.left = (e.clientX + (Math.random()*16-8)) + 'px';
+      s.style.top = (e.clientY + (Math.random()*10-5)) + 'px';
+      s.style.background = 'radial-gradient(circle, #fff 10%, #ffd1e0 50%, rgba(255,255,255,0) 70%)';
+      document.body.appendChild(s);
+      setTimeout(() => s.remove(), 1700);
+    }
+  }
+
+  // ===== Fade-in on view =====
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(en => en.isIntersecting && en.target.classList.add('visible'));
+  }, { threshold: .12 });
+  document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+
+  // ===== Age Countdown based on 2009-09-15 05:32 (local) =====
+  const birth = new Date(2009, 8, 15, 5, 32, 0); // months are 0-indexed
+  function updateAge() {
+    const now = new Date();
+    let years = now.getFullYear() - birth.getFullYear();
+    let months = now.getMonth() - birth.getMonth();
+    let days = now.getDate() - birth.getDate();
+    let hours = now.getHours() - birth.getHours();
+    let minutes = now.getMinutes() - birth.getMinutes();
+    let seconds = now.getSeconds() - birth.getSeconds();
+    
+    if (seconds < 0) { seconds += 60; minutes--; }
+    if (minutes < 0) { minutes += 60; hours--; }
+    if (hours < 0)   { hours += 24; days--;  }
+    if (days < 0)    {
+      const prevMonthLastDay = new Date(now.getFullYear(), now.getMonth(), 0).getDate();
+      days += prevMonthLastDay;
+      months--;
+    }
+    if (months < 0)  { months += 12; years--; }
+
+    document.getElementById('years').textContent = years;
+    document.getElementById('months').textContent = months;
+    document.getElementById('days').textContent = days;
+    document.getElementById('hours').textContent = hours;
+    document.getElementById('minutes').textContent = minutes;
+    document.getElementById('seconds').textContent = seconds;
+  }
+  updateAge();
+  setInterval(updateAge, 1000);
+
+  // ===== Slideshow =====
+  let currentSlide = 0;
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  function showSlide(i) {
+    slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
+  }
+  showSlide(currentSlide);
+  setInterval(() => {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+  }, 2800);
+
+  // ===== Love Meter / Heart Game =====
+  let love = 0; // 0..100
+  const meter = document.getElementById('meter');
+  const meterLabel = document.getElementById('meter-label');
+  const heartBank = document.getElementById('heart-bank');
+  for (let i=0; i<24; i++) {
+    const b = document.createElement('button');
+    b.className = 'heart-btn';
+    b.setAttribute('aria-label','Add love');
+    b.textContent = ['💗','💖','💞','💕'][i%4];
+    b.addEventListener('click', () => { love = Math.min(100, love + 5 + (i%3)); updateMeter(); });
+    heartBank.appendChild(b);
+  }
+  function updateMeter() {
+    meter.style.width = love + '%';
+    meterLabel.innerHTML = `<strong>${love}%</strong> love power`;
+  }
+  setInterval(() => { love = Math.max(0, love - 1); updateMeter(); }, 1500);
+  updateMeter();
+
+  // ===== Facts =====
+  function dayOfWeek(d) {
+    return ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][d.getDay()];
+  }
+  function zodiac(d) {
+    const m = d.getMonth()+1, day = d.getDate();
+    if ((m==1&&day>=20)||(m==2&&day<=18)) return 'Aquarius';
+    if ((m==2&&day>=19)||(m==3&&day<=20)) return 'Pisces';
+    if ((m==3&&day>=21)||(m==4&&day<=19)) return 'Aries';
+    if ((m==4&&day>=20)||(m==5&&day<=20)) return 'Taurus';
+    if ((m==5&&day>=21)||(m==6&&day<=20)) return 'Gemini';
+    if ((m==6&&day>=21)||(m==7&&day<=22)) return 'Cancer';
+    if ((m==7&&day>=23)||(m==8&&day<=22)) return 'Leo';
+    if ((m==8&&day>=23)||(m==9&&day<=22)) return 'Virgo';
+    if ((m==9&&day>=23)||(m==10&&day<=22)) return 'Libra';
+    if ((m==10&&day>=23)||(m==11&&day<=21)) return 'Scorpio';
+    if ((m==11&&day>=22)||(m==12&&day<=21)) return 'Sagittarius';
+    return 'Capricorn';
+  }
+  function isoWeek(d) {
+    const dt = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+    const dayNum = (dt.getUTCDay() + 6) % 7;
+    dt.setUTCDate(dt.getUTCDate() - dayNum + 3);
+    const firstThursday = new Date(Date.UTC(dt.getUTCFullYear(),0,4));
+    const week = 1 + Math.round(((dt - firstThursday) / 86400000 - 3 + ((firstThursday.getUTCDay()+6)%7)) / 7);
+    return week;
+  }
+  function dayOfYear(d) {
+    const start = new Date(d.getFullYear(), 0, 0);
+    const diff = d - start;
+    return Math.floor(diff / 86400000);
+  }
+  function updateFacts() {
+    const now = new Date();
+    const daysLived = Math.floor((now - birth) / 86400000);
+    const hoursLived = Math.floor((now - birth) / 3600000);
+    document.getElementById('fact-dow').textContent = dayOfWeek(birth);
+    document.getElementById('fact-zodiac').textContent = zodiac(birth);
+    document.getElementById('fact-week').textContent = isoWeek(birth);
+    document.getElementById('fact-doy').textContent = dayOfYear(birth);
+    document.getElementById('fact-days').textContent = daysLived.toLocaleString();
+    document.getElementById('fact-hours').textContent = hoursLived.toLocaleString();
+  }
+  updateFacts();
+
+  // ===== Surprise Messages =====
+  const surprises = [
+  '✨ Surprise! You make every day brighter.',
+  '💖 You are loved more than words can say.',
+  '🌸 Keep blooming, Areeba!',
+  '🌟 Your smile could outshine constellations.',
+  '🎀 Wrapped in pink wishes just for you!',
+  '🦋 May your dreams flutter to life.',
+  '🍰 The world is sweeter with you in it.',
+  '🎈 Floaty hearts say: you’re amazing!',
+  '🧚 A tiny fairy just whispered: ‘You got this.’',
+  '💌 You’re a gift to everyone you meet.'
+  ];
+  function showSurprise() {
+    const box = document.getElementById('surprise-box');
+    const msg = surprises[Math.floor(Math.random()*surprises.length)];
+    box.textContent = msg;
+    box.classList.remove('visible');
+    requestAnimationFrame(()=> box.classList.add('visible'));
+  }
+
+  // ===== Poem Generator =====
+  const poem1 = [
+  'In baby pink mornings we find your light,',
+  'Soft as a secret, warm and bright,',
+  'Areeba, your laughter paints the air,',
+  'With gentle sparkles everywhere,'
+  ];
+  const poem2 = [
+  'Dreams like petals drift to you,',
+  'Stars line up to cheer you through,',
+  'Every step a little glow,',
+  'Every heartbeat soft and slow,'
+  ];
+  const poem3 = [
+  'May joy be yours in skies of rose,',
+  'Where every tender moment grows,',
+  'And all your wishes twirl and play,',
+  'Happy, happy, birthday day.'
+  ];
+  function generatePoem() {
+    function pick(arr) { return arr[Math.floor(Math.random()*arr.length)]; }
+    const lines = [pick(poem1), pick(poem2), pick(poem3)];
+    const area = document.getElementById('poem-area');
+    area.innerHTML = `<em>${lines[0]}</em><br>${lines[1]}<br><strong>${lines[2]}</strong>`;
+    area.classList.remove('visible');
+    requestAnimationFrame(()=> area.classList.add('visible'));
+  }
+
+  // ===== Compliment Generator =====
+  const compliments = [
+  'Areeba, you are clever like freshly baked cookies.',
+  'Areeba, you are witty like cotton candy clouds.',
+  'Areeba, you are compassionate like a field of asters.',
+  'Areeba, you are graceful like a wish come true.',
+  'Areeba, you are majestic like a field of asters.',
+  'Areeba, you are magnetic like a pastel rainbow.',
+  'Areeba, you are generous like cotton candy clouds.',
+  'Areeba, you are witty like the first light of dawn.',
+  'Areeba, you are caring like a pastel rainbow.',
+  'Areeba, you are adventurous like moonlight on glass.',
+  'Areeba, you are graceful like a warm hug.',
+  'Areeba, you are marvelous like a sapphire sky.',
+  'Areeba, you are artistic like cotton candy clouds.',
+  'Areeba, you are soft like a crisp morning.',
+  'Areeba, you are marvelous like a gentle melody.',
+  'Areeba, you are bubbly like a sapphire sky.',
+  'Areeba, you are serene like moonlight on glass.',
+  'Areeba, you are glowing like a teddy bear.',
+  'Areeba, you are courageous like a field of asters.',
+  'Areeba, you are bubbly like a happy heartbeat.',
+  'Areeba, you are stellar like a sapphire sky.',
+  'Areeba, you are gentle like a warm hug.',
+  'Areeba, you are joyful like soft rose petals.',
+  'Areeba, you are elegant like soft rose petals.',
+  'Areeba, you are genuine like starlight on calm water.',
+  'Areeba, you are amazing like soft rose petals.',
+  'Areeba, you are brave like starlight on calm water.',
+  'Areeba, you are sweet like a wish come true.',
+  'Areeba, you are generous like a warm hug.',
+  'Areeba, you are fantastic like a pastel rainbow.',
+  'Areeba, you are dazzling like a teddy bear.',
+  'Areeba, you are brave like a gentle melody.',
+  'Areeba, you are playful like a crisp morning.',
+  'Areeba, you are adventurous like a pastel rainbow.',
+  'Areeba, you are playful like a cozy sunrise.',
+  'Areeba, you are clever like a teddy bear.',
+  'Areeba, you are ambitious like a happy heartbeat.',
+  'Areeba, you are genuine like a page of poetry.',
+  'Areeba, you are glowing like spring rain.',
+  'Areeba, you are wholesome like a teddy bear.',
+  'Areeba, you are supportive like soft rose petals.',
+  'Areeba, you are compassionate like freshly baked cookies.',
+  'Areeba, you are fantastic like a crisp morning.',
+  'Areeba, you are amazing like a cozy sunrise.',
+  'Areeba, you are witty like a warm hug.',
+  'Areeba, you are dazzling like starlight on calm water.',
+  'Areeba, you are dazzling like a blooming garden.',
+  'Areeba, you are loyal like spring rain.',
+  'Areeba, you are bright like soft rose petals.',
+  'Areeba, you are warm like a wish come true.',
+  'Areeba, you are serene like a cozy sunrise.',
+  'Areeba, you are radiant like a crisp morning.',
+  'Areeba, you are stellar like the first light of dawn.',
+  'Areeba, you are kind-hearted like a warm hug.',
+  'Areeba, you are gentle like a cozy sunrise.',
+  'Areeba, you are magnetic like a teddy bear.',
+  'Areeba, you are magnetic like a crisp morning.',
+  'Areeba, you are patient like a sapphire sky.',
+  'Areeba, you are creative like a friendly breeze.',
+  'Areeba, you are ambitious like cotton candy clouds.',
+  'Areeba, you are inspiring like moonlight on glass.',
+  'Areeba, you are vibrant like spring rain.',
+  'Areeba, you are sweet like a crisp morning.',
+  'Areeba, you are thoughtful like a gentle melody.',
+  'Areeba, you are marvelous like cotton candy clouds.',
+  'Areeba, you are genuine like spring rain.',
+  'Areeba, you are optimistic like freshly baked cookies.',
+  'Areeba, you are elegant like the first light of dawn.',
+  'Areeba, you are playful like moonlight on glass.',
+  'Areeba, you are strong like a warm hug.',
+  'Areeba, you are sweet like a field of asters.',
+  'Areeba, you are brilliant like a gentle melody.',
+  'Areeba, you are wholesome like a page of poetry.',
+  'Areeba, you are genuine like a pastel rainbow.',
+  'Areeba, you are supportive like cotton candy clouds.',
+  'Areeba, you are dazzling like a happy heartbeat.',
+  'Areeba, you are graceful like a crisp morning.',
+  'Areeba, you are sparkly like a sapphire sky.',
+  'Areeba, you are sincere like a sapphire sky.',
+  'Areeba, you are thoughtful like a page of poetry.',
+  'Areeba, you are compassionate like a cozy sunrise.',
+  'Areeba, you are fearless like freshly baked cookies.',
+  'Areeba, you are sweet like a blooming garden.',
+  'Areeba, you are dazzling like cotton candy clouds.',
+  'Areeba, you are glowing like a pastel rainbow.',
+  'Areeba, you are stellar like a page of poetry.',
+  'Areeba, you are caring like a gentle melody.',
+  'Areeba, you are strong like a gentle melody.',
+  'Areeba, you are thoughtful like a happy heartbeat.',
+  'Areeba, you are creative like a pastel rainbow.',
+  'Areeba, you are wholesome like a crisp morning.',
+  'Areeba, you are sincere like a cozy sunrise.',
+  'Areeba, you are gentle like a gentle melody.',
+  'Areeba, you are genuine like cotton candy clouds.',
+  'Areeba, you are generous like a pastel rainbow.',
+  'Areeba, you are courageous like a pastel rainbow.',
+  'Areeba, you are warm like a warm hug.',
+  'Areeba, you are clever like cotton candy clouds.',
+  'Areeba, you are wholesome like starlight on calm water.',
+  'Areeba, you are joyful like a friendly breeze.',
+  'Areeba, you are serene like a wish come true.',
+  'Areeba, you are magnetic like freshly baked cookies.',
+  'Areeba, you are graceful like a gentle melody.',
+  'Areeba, you are marvelous like a warm hug.',
+  'Areeba, you are elegant like a warm hug.',
+  'Areeba, you are ambitious like a sapphire sky.',
+  'Areeba, you are brilliant like the first light of dawn.',
+  'Areeba, you are sweet like soft rose petals.',
+  'Areeba, you are sincere like freshly baked cookies.',
+  'Areeba, you are fearless like a page of poetry.',
+  'Areeba, you are joyful like moonlight on glass.',
+  'Areeba, you are clever like moonlight on glass.',
+  'Areeba, you are adventurous like the first light of dawn.',
+  'Areeba, you are stellar like a pastel rainbow.',
+  'Areeba, you are amazing like a blooming garden.',
+  'Areeba, you are strong like a teddy bear.',
+  'Areeba, you are thoughtful like a cozy sunrise.',
+  'Areeba, you are creative like a warm hug.',
+  'Areeba, you are elegant like starlight on calm water.',
+  'Areeba, you are brave like a teddy bear.',
+  'Areeba, you are artistic like spring rain.',
+  'Areeba, you are charming like a cozy sunrise.',
+  'Areeba, you are sparkly like a blooming garden.',
+  'Areeba, you are loyal like a warm hug.',
+  'Areeba, you are radiant like a pastel rainbow.',
+  'Areeba, you are generous like a wish come true.',
+  'Areeba, you are fantastic like freshly baked cookies.',
+  'Areeba, you are joyful like a cozy sunrise.',
+  'Areeba, you are adventurous like a happy heartbeat.',
+  'Areeba, you are magnetic like a page of poetry.',
+  'Areeba, you are vibrant like a happy heartbeat.',
+  'Areeba, you are glowing like a cozy sunrise.',
+  'Areeba, you are optimistic like a wish come true.',
+  'Areeba, you are curious like a page of poetry.',
+  'Areeba, you are charming like a wish come true.',
+  'Areeba, you are amazing like a friendly breeze.',
+  'Areeba, you are caring like a crisp morning.',
+  'Areeba, you are charming like a happy heartbeat.',
+  'Areeba, you are gentle like moonlight on glass.',
+  'Areeba, you are sincere like spring rain.',
+  'Areeba, you are radiant like the first light of dawn.',
+  'Areeba, you are generous like moonlight on glass.',
+  'Areeba, you are bubbly like starlight on calm water.',
+  'Areeba, you are loyal like moonlight on glass.',
+  'Areeba, you are charming like starlight on calm water.',
+  'Areeba, you are warm like moonlight on glass.',
+  'Areeba, you are clever like a field of asters.',
+  'Areeba, you are thoughtful like a blooming garden.',
+  'Areeba, you are majestic like starlight on calm water.',
+  'Areeba, you are artistic like a friendly breeze.',
+  'Areeba, you are compassionate like a friendly breeze.',
+  'Areeba, you are patient like a blooming garden.',
+  'Areeba, you are epic like a sapphire sky.',
+  'Areeba, you are wholesome like a pastel rainbow.',
+  'Areeba, you are strong like the first light of dawn.',
+  'Areeba, you are clever like the first light of dawn.',
+  'Areeba, you are adventurous like a sapphire sky.',
+  'Areeba, you are brilliant like a friendly breeze.',
+  'Areeba, you are radiant like a happy heartbeat.',
+  'Areeba, you are courageous like a wish come true.',
+  'Areeba, you are thoughtful like starlight on calm water.',
+  'Areeba, you are epic like a blooming garden.',
+  'Areeba, you are sparkly like a cozy sunrise.',
+  'Areeba, you are patient like a teddy bear.',
+  'Areeba, you are fearless like cotton candy clouds.',
+  'Areeba, you are generous like a blooming garden.',
+  'Areeba, you are patient like moonlight on glass.',
+  'Areeba, you are fearless like a friendly breeze.',
+  'Areeba, you are glowing like a wish come true.',
+  'Areeba, you are wholesome like a warm hug.',
+  'Areeba, you are optimistic like a friendly breeze.',
+  'Areeba, you are magnetic like a friendly breeze.',
+  'Areeba, you are playful like a page of poetry.',
+  'Areeba, you are ambitious like soft rose petals.',
+  'Areeba, you are dazzling like spring rain.',
+  'Areeba, you are compassionate like a gentle melody.',
+  'Areeba, you are vibrant like the first light of dawn.',
+  'Areeba, you are elegant like a cozy sunrise.',
+  'Areeba, you are courageous like a cozy sunrise.',
+  'Areeba, you are fearless like a cozy sunrise.',
+  'Areeba, you are sweet like a teddy bear.',
+  'Areeba, you are creative like a teddy bear.',
+  'Areeba, you are amazing like a happy heartbeat.',
+  'Areeba, you are generous like a teddy bear.',
+  'Areeba, you are stellar like cotton candy clouds.',
+  'Areeba, you are witty like freshly baked cookies.',
+  'Areeba, you are compassionate like spring rain.',
+  'Areeba, you are generous like a friendly breeze.',
+  'Areeba, you are sincere like a happy heartbeat.',
+  'Areeba, you are cheerful like a page of poetry.',
+  'Areeba, you are generous like the first light of dawn.',
+  'Areeba, you are genuine like a gentle melody.',
+  'Areeba, you are creative like a page of poetry.',
+  'Areeba, you are bubbly like a field of asters.',
+  'Areeba, you are compassionate like soft rose petals.',
+  'Areeba, you are joyful like a blooming garden.',
+  'Areeba, you are dazzling like soft rose petals.',
+  'Areeba, you are majestic like moonlight on glass.',
+  'Areeba, you are glowing like a crisp morning.',
+  'Areeba, you are amazing like a field of asters.',
+  'Areeba, you are sparkly like a field of asters.',
+  'Areeba, you are glowing like a warm hug.',
+  'Areeba, you are serene like freshly baked cookies.',
+  'Areeba, you are joyful like spring rain.',
+  'Areeba, you are magnetic like moonlight on glass.',
+  'Areeba, you are supportive like a blooming garden.',
+  'Areeba, you are wholesome like a blooming garden.',
+  'Areeba, you are fearless like a sapphire sky.',
+  'Areeba, you are brave like a cozy sunrise.',
+  'Areeba, you are genuine like a teddy bear.',
+  'Areeba, you are loyal like a blooming garden.',
+  'Areeba, you are courageous like spring rain.',
+  'Areeba, you are epic like a friendly breeze.',
+  'Areeba, you are clever like a crisp morning.',
+  'Areeba, you are optimistic like moonlight on glass.',
+  'Areeba, you are radiant like starlight on calm water.',
+  'Areeba, you are genuine like a cozy sunrise.',
+  'Areeba, you are brave like a crisp morning.',
+  'Areeba, you are vibrant like a field of asters.',
+  'Areeba, you are adventurous like freshly baked cookies.',
+  'Areeba, you are sincere like a warm hug.',
+  'Areeba, you are playful like a field of asters.',
+  'Areeba, you are sparkly like a warm hug.',
+  'Areeba, you are sparkly like the first light of dawn.',
+  'Areeba, you are gentle like a blooming garden.',
+  'Areeba, you are glowing like soft rose petals.',
+  'Areeba, you are brave like freshly baked cookies.',
+  'Areeba, you are warm like cotton candy clouds.',
+  'Areeba, you are stellar like a happy heartbeat.',
+  'Areeba, you are kind-hearted like a happy heartbeat.',
+  'Areeba, you are charming like freshly baked cookies.',
+  'Areeba, you are genuine like a warm hug.',
+  'Areeba, you are artistic like starlight on calm water.',
+  'Areeba, you are dazzling like a pastel rainbow.',
+  'Areeba, you are courageous like a warm hug.',
+  'Areeba, you are serene like spring rain.',
+  'Areeba, you are amazing like a pastel rainbow.',
+  'Areeba, you are brave like the first light of dawn.',
+  'Areeba, you are adventurous like a warm hug.',
+  'Areeba, you are brilliant like a blooming garden.',
+  'Areeba, you are sparkly like a friendly breeze.',
+  'Areeba, you are joyful like a warm hug.',
+  'Areeba, you are warm like soft rose petals.',
+  'Areeba, you are marvelous like a pastel rainbow.',
+  'Areeba, you are graceful like the first light of dawn.',
+  'Areeba, you are amazing like starlight on calm water.',
+  'Areeba, you are adventurous like a wish come true.',
+  'Areeba, you are epic like a field of asters.',
+  'Areeba, you are fantastic like a page of poetry.',
+  'Areeba, you are inspiring like a cozy sunrise.',
+  'Areeba, you are witty like moonlight on glass.',
+  'Areeba, you are strong like a crisp morning.',
+  'Areeba, you are optimistic like a page of poetry.',
+  'Areeba, you are elegant like a sapphire sky.',
+  'Areeba, you are cheerful like moonlight on glass.',
+  'Areeba, you are ambitious like a page of poetry.',
+  'Areeba, you are fearless like a field of asters.',
+  'Areeba, you are sweet like a page of poetry.',
+  'Areeba, you are genuine like a field of asters.',
+  'Areeba, you are creative like a blooming garden.',
+  'Areeba, you are glowing like a blooming garden.',
+  'Areeba, you are creative like cotton candy clouds.',
+  'Areeba, you are loyal like a crisp morning.',
+  'Areeba, you are bubbly like a page of poetry.',
+  'Areeba, you are sparkly like a pastel rainbow.',
+  'Areeba, you are ambitious like a field of asters.',
+  'Areeba, you are elegant like a teddy bear.',
+  'Areeba, you are charming like a blooming garden.',
+  'Areeba, you are strong like soft rose petals.',
+  'Areeba, you are curious like spring rain.',
+  'Areeba, you are supportive like a happy heartbeat.',
+  'Areeba, you are caring like a wish come true.',
+  'Areeba, you are playful like a pastel rainbow.',
+  'Areeba, you are optimistic like the first light of dawn.',
+  'Areeba, you are graceful like soft rose petals.',
+  'Areeba, you are bright like a crisp morning.',
+  'Areeba, you are charming like a warm hug.',
+  'Areeba, you are ambitious like a warm hug.',
+  'Areeba, you are patient like a happy heartbeat.',
+  'Areeba, you are joyful like a crisp morning.',
+  'Areeba, you are soft like a pastel rainbow.',
+  'Areeba, you are amazing like a page of poetry.',
+  'Areeba, you are courageous like a teddy bear.',
+  'Areeba, you are ambitious like a gentle melody.',
+  'Areeba, you are epic like a wish come true.',
+  'Areeba, you are caring like a page of poetry.',
+  'Areeba, you are courageous like soft rose petals.',
+  'Areeba, you are kind-hearted like a friendly breeze.',
+  'Areeba, you are wholesome like a sapphire sky.',
+  'Areeba, you are bright like cotton candy clouds.',
+  'Areeba, you are majestic like a happy heartbeat.',
+  'Areeba, you are patient like a friendly breeze.',
+  'Areeba, you are caring like a blooming garden.',
+  'Areeba, you are epic like a happy heartbeat.',
+  'Areeba, you are fantastic like starlight on calm water.',
+  'Areeba, you are gentle like a sapphire sky.',
+  'Areeba, you are clever like a page of poetry.',
+  'Areeba, you are optimistic like a warm hug.',
+  'Areeba, you are strong like moonlight on glass.',
+  'Areeba, you are brilliant like a page of poetry.',
+  'Areeba, you are sweet like the first light of dawn.',
+  'Areeba, you are epic like the first light of dawn.',
+  'Areeba, you are supportive like a field of asters.',
+  'Areeba, you are ambitious like a pastel rainbow.',
+  'Areeba, you are loyal like a field of asters.',
+  'Areeba, you are brave like a friendly breeze.',
+  'Areeba, you are inspiring like a happy heartbeat.',
+  'Areeba, you are stellar like a blooming garden.',
+  'Areeba, you are compassionate like a page of poetry.',
+  'Areeba, you are sweet like a sapphire sky.',
+  'Areeba, you are serene like soft rose petals.',
+  'Areeba, you are epic like soft rose petals.',
+  'Areeba, you are joyful like a gentle melody.',
+  'Areeba, you are graceful like a page of poetry.',
+  'Areeba, you are brave like a wish come true.',
+  'Areeba, you are caring like a friendly breeze.',
+  'Areeba, you are playful like freshly baked cookies.',
+  'Areeba, you are amazing like freshly baked cookies.',
+  'Areeba, you are cheerful like a warm hug.',
+  'Areeba, you are majestic like a crisp morning.',
+  'Areeba, you are optimistic like soft rose petals.',
+  'Areeba, you are elegant like a wish come true.',
+  'Areeba, you are patient like a cozy sunrise.',
+  'Areeba, you are vibrant like a page of poetry.',
+  'Areeba, you are bubbly like a wish come true.',
+  'Areeba, you are brilliant like freshly baked cookies.',
+  'Areeba, you are creative like spring rain.',
+  'Areeba, you are curious like soft rose petals.',
+  'Areeba, you are curious like moonlight on glass.',
+  'Areeba, you are caring like a field of asters.',
+  'Areeba, you are brave like soft rose petals.',
+  'Areeba, you are wholesome like spring rain.',
+  'Areeba, you are stellar like a cozy sunrise.',
+  'Areeba, you are warm like a crisp morning.',
+  'Areeba, you are adventurous like a gentle melody.',
+  'Areeba, you are magnetic like a warm hug.',
+  'Areeba, you are serene like a pastel rainbow.',
+  'Areeba, you are generous like a crisp morning.',
+  'Areeba, you are fantastic like moonlight on glass.',
+  'Areeba, you are bright like a blooming garden.',
+  'Areeba, you are supportive like a sapphire sky.',
+  'Areeba, you are generous like a page of poetry.',
+  'Areeba, you are wholesome like a wish come true.',
+  'Areeba, you are dazzling like a cozy sunrise.',
+  'Areeba, you are soft like a happy heartbeat.',
+  'Areeba, you are clever like soft rose petals.',
+  'Areeba, you are patient like a warm hug.',
+  'Areeba, you are creative like soft rose petals.',
+  'Areeba, you are fearless like a crisp morning.',
+  'Areeba, you are fearless like a warm hug.',
+  'Areeba, you are elegant like freshly baked cookies.',
+  'Areeba, you are witty like a page of poetry.',
+  'Areeba, you are supportive like a teddy bear.',
+  'Areeba, you are epic like a teddy bear.',
+  'Areeba, you are sparkly like a wish come true.',
+  'Areeba, you are curious like a blooming garden.',
+  'Areeba, you are witty like a sapphire sky.',
+  'Areeba, you are clever like a blooming garden.',
+  'Areeba, you are cheerful like starlight on calm water.',
+  'Areeba, you are bright like spring rain.',
+  'Areeba, you are sincere like a friendly breeze.',
+  'Areeba, you are sweet like moonlight on glass.',
+  'Areeba, you are inspiring like a pastel rainbow.',
+  'Areeba, you are brilliant like cotton candy clouds.',
+  'Areeba, you are marvelous like a page of poetry.',
+  'Areeba, you are glowing like a field of asters.',
+  'Areeba, you are joyful like a wish come true.',
+  'Areeba, you are strong like a page of poetry.',
+  'Areeba, you are brilliant like a teddy bear.',
+  'Areeba, you are serene like a gentle melody.',
+  'Areeba, you are fantastic like cotton candy clouds.',
+  'Areeba, you are ambitious like starlight on calm water.',
+  'Areeba, you are inspiring like cotton candy clouds.',
+  'Areeba, you are sweet like starlight on calm water.',
+  'Areeba, you are cheerful like a cozy sunrise.',
+  'Areeba, you are serene like cotton candy clouds.',
+  'Areeba, you are supportive like a wish come true.',
+  'Areeba, you are thoughtful like a pastel rainbow.',
+  'Areeba, you are creative like a crisp morning.',
+  'Areeba, you are brave like a happy heartbeat.',
+  'Areeba, you are dazzling like a gentle melody.',
+  'Areeba, you are graceful like a blooming garden.',
+  'Areeba, you are optimistic like a crisp morning.',
+  'Areeba, you are supportive like a page of poetry.',
+  'Areeba, you are sweet like spring rain.',
+  'Areeba, you are magnetic like a wish come true.',
+  'Areeba, you are supportive like moonlight on glass.',
+  'Areeba, you are witty like spring rain.',
+  'Areeba, you are magnetic like a blooming garden.',
+  'Areeba, you are bubbly like a pastel rainbow.',
+  'Areeba, you are bright like a gentle melody.',
+  'Areeba, you are serene like a warm hug.',
+  'Areeba, you are majestic like freshly baked cookies.',
+  'Areeba, you are vibrant like freshly baked cookies.',
+  'Areeba, you are ambitious like a wish come true.',
+  'Areeba, you are amazing like a teddy bear.',
+  'Areeba, you are glowing like a page of poetry.',
+  'Areeba, you are brave like a blooming garden.',
+  'Areeba, you are sincere like soft rose petals.',
+  'Areeba, you are graceful like a field of asters.'
+  ];
+  function giveCompliment() {
+    const c = compliments[Math.floor(Math.random()*compliments.length)];
+    const box = document.getElementById('compliment-box');
+    box.textContent = c;
+    box.classList.remove('visible');
+    requestAnimationFrame(()=> box.classList.add('visible'));
+  }
+
+  // ===== Favorites flip =====
+  function flipFavorite(el) { el.classList.toggle('flip'); }
+
+  // ===== Easter Eggs =====
+  const eggMessages = [
+    "You found a pink secret! 🌸",
+    "Hidden hug unlocked 🤗",
+    "A tiny cheer just for you ✨",
+    "You’re loved — pass it on 💌",
+    "Soft courage bonus acquired 🧚",
+    "Gentle sparkle achieved 🌟",
+    "Keep exploring, birthday star 💖",
+    "A cupcake of kindness for you 🧁",
+    "A rose for your day 🌹",
+    "You’re pure magic ✨",
+    "Dancing clouds approve ☁️",
+    "Pink confetti? Nope — pink calm. 🎀",
+    "The world smiles with you 😄",
+    "Secret melody sings 🎶",
+    "Warm cocoa vibes ☕",
+    "Page thinks you’re epic 💫",
+    "Sunbeams follow you ☀️",
+    "Aster petals applaud 🌼",
+    "Dreams waving hello 🌙",
+    "Soft power on 🔆",
+    "You’re doing amazing 💯",
+    "High-five, star-catcher 🖐️",
+    "A tiny wish granted ⭐",
+    "Smile checkpoint passed ✅",
+    "Happy heart detected 💓",
+    "Glitter-free glitter 🫧",
+    "Calm sparkle mode 🪄",
+    "Your vibe: immaculate 🌈",
+    "Cozy corner reserved 🛋️",
+    "Bonus love unlocked 💟"
+  ];
+  function revealEgg(i) {
+    const msg = eggMessages[(i-1) % eggMessages.length];
+    alert(msg);
+  }
+
+  // ===== Game: Catch the Star =====
+  let score = 0;
+  const star = document.getElementById('star');
+  const gameArea = document.getElementById('game-area');
+  function moveStar() {
+    const rect = gameArea.getBoundingClientRect();
+    const x = Math.random() * (rect.width - 30);
+    const y = Math.random() * (rect.height - 30);
+    star.style.left = x + 'px';
+    star.style.top = y + 'px';
+  }
+  star.addEventListener('click', () => { score++; document.getElementById('score').textContent = score; moveStar(); spawnSparkles({clientX: star.getBoundingClientRect().left, clientY: star.getBoundingClientRect().top}); });
+  setInterval(moveStar, 1500);
+  moveStar();
+
+  // ===== Panel tiny secrets =====
+  function revealPanelMessage(i) {
+    const el = document.getElementById('panel-msg-'+i);
+    const msgs = [
+      "You are treasured more than you know.",
+      "Tiny steps, giant heart.",
+      "Brave, bright, beautifully you.",
+      "Kindness is your superpower.",
+      "Today and always, you matter.",
+      "Soft glow, strong soul.",
+      "Every day with you is special.",
+      "Keep blooming in pink skies.",
+      "Your laughter is sunshine.",
+      "Your story is just beginning."
+    ];
+    el.textContent = msgs[i % msgs.length];
+  }
+
+  // ===== Accessibility helpers =====
+  document.addEventListener('keyup', (e) => {
+    // Type 'LOVE' to show a sweet alert
+    window._typed = (window._typed || "") + e.key.toUpperCase();
+    if (window._typed.endsWith("LOVE")) {
+      alert("LOVE unlocked: You are adored, Areeba! 💖");
+      window._typed = "";
+    }
+  });
+
+/* --- extra from v3 --- */
+
+const DOB="2009-09-15";
+/* FX */
+const fx=document.getElementById('fx'),ctx=fx.getContext('2d');let W=0,H=0,DPR=Math.min(2,devicePixelRatio||1);
+function size(){W=fx.width=innerWidth*DPR;H=fx.height=innerHeight*DPR;fx.style.width=innerWidth+'px';fx.style.height=innerHeight+'px';}addEventListener('resize',size);size();
+const bursts=[],pieces=[];function confetti(cx=W/2,cy=H/3,n=100){for(let i=0;i<n;i++)pieces.push({x:cx,y:cy,vx:(Math.random()-0.5)*5,vy:(Math.random()-1)*6-5,g:.12,a:1,r:Math.random()*6+3})}
+addEventListener('click',e=>{const x=(e.clientX||innerWidth/2)*DPR,y=(e.clientY||innerHeight/2)*DPR;bursts.push({x,y,t:0});confetti(x,y,120)});
+function draw(){ctx.clearRect(0,0,W,H);for(let i=bursts.length-1;i>=0;i--){const b=bursts[i];b.t++;const R=Math.min(140*DPR,b.t*3);for(let j=0;j<18;j++){const ang=j*(Math.PI*2/18);ctx.beginPath();ctx.arc(b.x+Math.cos(ang)*R,b.y+Math.sin(ang)*R,2*DPR,0,Math.PI*2);ctx.fillStyle=['#ff76b6','#ffa3ce','#ffc1dc','#ffd6e7'][j%4];ctx.fill()}if(R>=140*DPR)bursts.splice(i,1)}for(let i=pieces.length-1;i>=0;i--){const p=pieces[i];p.vy+=p.g;p.x+=p.vx;p.y+=p.vy;p.a-=.01;ctx.globalAlpha=Math.max(0,p.a);ctx.fillStyle=['#ff76b6','#ffa3ce','#ffc1dc','#ffd6e7'][i%4];ctx.fillRect(p.x,p.y,p.r,p.r);if(p.a<=0||p.y>H+20)pieces.splice(i,1)}ctx.globalAlpha=1;requestAnimationFrame(draw)}draw();
+/* UI */
+const toast=document.getElementById('toast');function tip(t){toast.textContent=t;toast.style.display='block';clearTimeout(tip.t);tip.t=setTimeout(()=>toast.style.display='none',1600)}
+const giftModal=document.getElementById('giftModal');document.getElementById('giftBtn').onclick=()=>giftModal.showModal();document.getElementById('confettiBtn').onclick=()=>confetti();document.getElementById('fireBtn').onclick=()=>{bursts.push({x:W/2,y:H/3,t:0});confetti(W/2,H/3,140)};
+const music=document.getElementById('music');document.getElementById('musicToggle').onclick=async()=>{try{if(music.paused){await music.play();tip('Music ON')}else{music.pause();tip('Music OFF')}}catch(e){tip('Tap the page once to enable audio')}};
+document.getElementById('speak').onclick=()=>{const t=new SpeechSynthesisUtterance('Happy Birthday, Areeba! Pink wishes from the heart.');t.lang='en-US';t.rate=1.02;t.pitch=1.05;speechSynthesis.speak(t)};
+/* Countdown & Age */
+function nextBirthday(){const [y,m,d]=DOB.split('-').map(Number);const now=new Date();let n=new Date(now.getFullYear(),m-1,d);if(n<now)n.setFullYear(now.getFullYear()+1);return n}
+function ageStats(){const [y,m,d]=DOB.split('-').map(Number);const birth=new Date(y,m-1,d);const now=new Date();let years=now.getFullYear()-y;const had=(now.getMonth()>m-1)||(now.getMonth()==m-1&&now.getDate()>=d);if(!had)years--;const ms=now-birth;const days=Math.floor(ms/86400000);const hours=Math.floor(ms/3600000);const minutes=Math.floor(ms/60000);const seconds=Math.floor(ms/1000);document.getElementById('agegrid').innerHTML=`<div class="box"><b>${years}</b><div>Years old</div></div><div class="box"><b>${days.toLocaleString()}</b><div>Days</div></div><div class="box"><b>${hours.toLocaleString()}</b><div>Hours</div></div><div class="box"><b>${minutes.toLocaleString()}</b><div>Minutes</div></div><div class="box"><b>${seconds.toLocaleString()}</b><div>Seconds</div></div>`}
+function tick(){const t=+nextBirthday()-Date.now();const d=Math.floor(t/86400000),h=Math.floor((t%86400000)/3600000),m=Math.floor((t%3600000)/60000),s=Math.floor((t%60000)/1000);document.getElementById('countdown').innerHTML=[`<div class="time"><b>${d}</b>Days</div>`,`<div class="time"><b>${h}</b>Hours</div>`,`<div class="time"><b>${m}</b>Minutes</div>`,`<div class="time"><b>${s}</b>Seconds</div>`].join('');ageStats();setTimeout(tick,1000)}tick();
+/* Tabs */
+const tabs=document.querySelectorAll('.tab');tabs.forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));document.getElementById('panel-'+b.dataset.tab).classList.add('active')}));
+/* Tic Tac Toe - robust */
+const boardDiv=document.getElementById('tttBoard');const tttMsg=document.getElementById('tttMsg');let board,player,ai,gameOver=false,aiThinking=false;
+const wins=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+function tttReset(){board=Array(9).fill('');player='X';ai='O';gameOver=false;aiThinking=false;boardDiv.innerHTML='';for(let i=0;i<9;i++){const c=document.createElement('div');c.className='tttCell';c.dataset.i=i;c.textContent='';c.onclick=()=>playerMove(i);boardDiv.appendChild(c)}tttMsg.textContent='Your move';}
+function getWinner(b){for(const [a,b2,c] of wins){if(b[a]&&b[a]===b[b2]&&b[a]===b[c])return b[a];}return b.every(Boolean)?'T':null}
+function emptyIndices(b){const arr=[];for(let i=0;i<9;i++)if(!b[i])arr.push(i);return arr}
+function tryLine(b,mark){for(const [a,b2,c] of wins){const line=[b[a],b[b2],b[c]];if(line.filter(x=>x===mark).length===2&&line.includes('')){const idx=[a,b2,c][line.indexOf('')];return idx}}return null}
+function aiMove(){if(gameOver||aiThinking)return;aiThinking=true;setTimeout(()=>{let move=tryLine(board,ai);if(move==null)move=tryLine(board,player);if(move==null&&board[4]=='')move=4;if(move==null){const corners=[0,2,6,8].filter(i=>board[i]=='');if(corners.length)move=corners[Math.floor(Math.random()*corners.length)];}
+if(move==null){const empties=emptyIndices(board);move=empties[Math.floor(Math.random()*empties.length)]}place(move,ai);aiThinking=false;},300)}
+function place(i,mark){if(gameOver||board[i])return;board[i]=mark;boardDiv.children[i].textContent=mark;const w=getWinner(board);if(w){gameOver=true;tttMsg.textContent=(w==='T'?'Tie':'Winner: '+w);if(w!=='T')confetti();return}if(mark===player){aiMove()}}
+function playerMove(i){if(aiThinking||gameOver)return;place(i,player)}
+document.getElementById('tttReset').onclick=tttReset;tttReset();
+/* Scramble */
+const words=['STAR','SMILE','DREAM','PINK','HEART','LAUGH','SHINE','AREEBA','SEPTEMBER','BIRTHDAY','SPARKLE'];let current='';
+function shuffle(s){return s.split('').sort(()=>Math.random()-0.5).join('')}
+function nextWord(){current=words[Math.floor(Math.random()*words.length)];document.getElementById('scrambleWord').textContent=shuffle(current);document.getElementById('scrambleInput').value='';document.getElementById('scrambleMsg').textContent=''}
+document.getElementById('scrambleCheck').onclick=()=>{const val=(document.getElementById('scrambleInput').value||'').trim().toUpperCase();document.getElementById('scrambleMsg').textContent=(val===current)?'Correct!':'Try again';if(val===current)confetti()};document.getElementById('scrambleNext').onclick=nextWord;nextWord();
+/* Memory — 4s reveal */
+const memoryGrid=document.getElementById('memoryGrid');const memoryMsg=document.getElementById('memoryMsg');
+const memIcons=['💖','🎀','🍰','🌸','🧁','🎉','🌷','⭐','🫶','🎈','🍓','🩷'];
+let deck=[],first=null,lock=false,found=0,allowClicks=false,revealTimer=null;
+function makeDeck(){deck=[...memIcons,...memIcons].sort(()=>Math.random()-0.5)}
+function renderMemory(){memoryGrid.innerHTML='';deck.forEach((v,i)=>{const c=document.createElement('div');c.className='memory-card';c.dataset.i=i;c.dataset.v=v;c.textContent='?';c.onclick=()=>{if(!allowClicks||lock||c.classList.contains('open'))return;c.classList.add('open');c.textContent=v;if(!first)first=c;else{lock=true;if(first.dataset.v===c.dataset.v){found++;setTimeout(()=>{first.style.opacity=c.style.opacity=.6;lock=false;first=null;if(found===memIcons.length){memoryMsg.textContent='All matched!';confetti()}},220)}else{setTimeout(()=>{first.classList.remove('open');c.classList.remove('open');first.textContent=c.textContent='?';lock=false;first=null},480)}}};memoryGrid.appendChild(c)})}
+function preReveal(){allowClicks=false;document.querySelectorAll('.memory-card').forEach(c=>{c.classList.add('open');c.textContent=c.dataset.v});memoryMsg.textContent='Memorize...';clearTimeout(revealTimer);revealTimer=setTimeout(()=>{document.querySelectorAll('.memory-card').forEach(c=>{c.classList.remove('open');c.textContent='?'});allowClicks=true;memoryMsg.textContent='Go!';},4000)}
+function startMemory(){found=0;first=null;lock=false;allowClicks=false;makeDeck();renderMemory();setTimeout(preReveal,50)}
+document.getElementById('resetMemory').onclick=startMemory;startMemory();
+/* Wishes, poem, timeline */
+document.getElementById('addWish').onclick=()=>{const t=(document.getElementById('wishText').value||'').trim();if(!t)return;const d=document.createElement('div');d.textContent='💌 '+t;d.className='box';document.getElementById('wishList').prepend(d);document.getElementById('wishText').value='';confetti()};
+const poem=document.getElementById('poem');const poemLines=[
+"On a pink September morning, a light said hello",
+"Every laugh you share paints the sky in glow",
+"Fifteenth of nine, two-thousand and nine",
+"A star named Areeba began to shine",
+"Petals of kindness follow where you go",
+"Your courage is soft, your dreams always grow",
+"In every heartbeat, there’s music and grace",
+"A gentle sunrise resting on your face",
+"May every birthday bloom sweeter than spring",
+"And every wish you whisper take wing"
+];poemLines.forEach(l=>{const d=document.createElement('div');d.className='chip';d.textContent=l;poem.appendChild(d)});
+const tl=document.getElementById('timeline');const years=[
+{y:2009,t:'Welcome to the world'},
+{y:2012,t:'First tiny victories'},
+{y:2015,t:'School adventures begin'},
+{y:2018,t:'New friends, new hobbies'},
+{y:2021,t:'Stronger, kinder, brighter'},
+{y:2023,t:'Dreams getting bigger'},
+{y:2024,t:'Smiles that light rooms'},
+{y:2025,t:'This special birthday — celebrated in pink!'}
+];years.forEach(it=>{const d=document.createElement('div');d.className='box';d.innerHTML='<b>'+it.y+'</b><div>'+it.t+'</div>';tl.appendChild(d)});
+
+</script>
+
+</body>
+</html>
